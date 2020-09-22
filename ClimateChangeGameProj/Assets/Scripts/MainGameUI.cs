@@ -1,52 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainGameUI : MonoBehaviour
 {
+    private const int STARTUP_SCREEN = 0;
+    private const int PUZZLE_SCREEN = 2;
 
-    public TextMeshProUGUI dateText;
-    public TextMeshProUGUI moneyText;
-    public TextMeshProUGUI scienceText;
-    public TextMeshProUGUI globalCoopText;
-    public TextMeshProUGUI educationText;
+    public Toggle statsToggle;
+    public GameObject statsView;
+    public GameObject playButton;
+    public GameObject testButton;
 
-    private static string[] seasons = { "Spring", "Summer", "Fall", "Winter" };
-    private int moneyVal = 0;
-    private int scienceVal = 0;
-    private int globalCoopVal = 0;
-    private int educationVal = 0;
-    private int currYear = 2020;
-    private int currSeason = 0;
-    
-    // Start is called before the first frame update
-    void Start()
+    public void SaveAndQuit()
     {
-        updateGui();
+        SceneManager.LoadScene(STARTUP_SCREEN);
     }
 
-    private void updateGui()
+    public void StartPuzzle()
     {
-        moneyText.text = "" + moneyVal + "M";
-        scienceText.text = "" + scienceVal;
-        globalCoopText.text = "" + globalCoopVal;
-        educationText.text = "" + educationVal;
-        dateText.text = seasons[currSeason] + ", " + currYear;
+        //Belle can uncomment this when she hooks up the puzzle screen
+        //SceneManager.LoadScene(PUZZLE_SCREEN);
+   
     }
 
-    public void progressTime()
+    public void onStatsTogglePress()
     {
-        moneyVal += 60;
-        scienceVal += 50;
-        globalCoopVal += 40;
-        educationVal += 30;
-        currSeason++;
-        if (currSeason > 3)
+        if(statsToggle.isOn)
         {
-            currSeason = 0;
-            currYear++;
+            statsView.SetActive(true);
+            playButton.SetActive(false);
+            testButton.SetActive(false);
         }
-        updateGui();
+        else
+        {
+            statsView.SetActive(false);
+            playButton.SetActive(true);
+            testButton.SetActive(true);
+        }
     }
+
 }
