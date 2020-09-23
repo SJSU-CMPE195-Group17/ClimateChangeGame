@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class StartupMenu : MonoBehaviour
 {
+    private const int MAIN_GAME_SCREEN = 1;
+
     public void PlayGame ()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(MAIN_GAME_SCREEN);
     }
-
 }
