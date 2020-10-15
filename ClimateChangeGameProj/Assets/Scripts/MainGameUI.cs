@@ -13,6 +13,7 @@ public class MainGameUI : MonoBehaviour
     public GameObject statsView;
     public GameObject playButton;
     public GameObject testButton;
+    public GameObject bgTint;
 
     public void SaveAndQuit()
     {
@@ -33,12 +34,14 @@ public class MainGameUI : MonoBehaviour
             statsView.SetActive(true);
             playButton.SetActive(false);
             testButton.SetActive(false);
+            bgTint.SetActive(true);
         }
         else
         {
             statsView.SetActive(false);
             playButton.SetActive(true);
             testButton.SetActive(true);
+            bgTint.SetActive(false);
         }
     }
 
