@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
     public const int WESTERN_EUROPE = 5;
     public const int SOUTHERN_EUROPE = 6;
     public const int EASTERN_EUROPE = 7;
-    public const int NOTHERN_AFRICA = 8;
+    public const int NORTHERN_AFRICA = 8;
     public const int WESTERN_AFRICA = 9;
     public const int MIDDLE_AFRICA = 10;
     public const int EASTERN_AFRICA = 11;
@@ -28,6 +28,8 @@ public class CameraController : MonoBehaviour
     public const int POLYNESIA = 19;
     public const int AUSTRALIA_NZ = 20;
     public const int HAWAII = 21;
+    public const int NORTH_POLE = 22;
+    public const int ANTARCTICA = 23;
 
     private Vector3[] regionRotations;
     public Transform camTarget;
@@ -38,51 +40,39 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        regionRotations = new Vector3[22];
-        //Northern America
-        regionRotations[0] = new Vector3(0, 240, 45);
-        //Central America
-        regionRotations[1] = new Vector3(0, 250, 70);
-        //Caribbean
-        regionRotations[2] = new Vector3(0, 270, 70);
-        //South America
-        regionRotations[3] = new Vector3(0, 285, 110);
-        //Northern Europe
-        regionRotations[4] = new Vector3(0, 355, 30);
-        //Western Europe
-        regionRotations[5] = new Vector3(0, 350, 42);
-        //Southern Europe
-        regionRotations[6] = new Vector3(0, 355, 50);
-        //Eastern Europe
-        regionRotations[7] = new Vector3(0, 45, 35);
-        //Northern Africa
-        regionRotations[8] = new Vector3(0, 0, 60);
-        //Western Africa
-        regionRotations[9] = new Vector3(0, 345, 70);
-        //Middle Africa
-        regionRotations[10]= new Vector3(0, 5, 90);
-        //Eastern Africa
-        regionRotations[11] = new Vector3(0, 23, 90);
-        //Southern Africa
-        regionRotations[12] = new Vector3(0, 10, 115);
-        //Western Asia
-        regionRotations[13] = new Vector3(0, 30, 60);
-        //Central Asia
-        regionRotations[14] = new Vector3(0, 52, 47);
-        //Southern Asia
-        regionRotations[15] = new Vector3(0, 60, 64);
-        //Eastern Asia
-        regionRotations[16] = new Vector3(0, 90, 53);
-        //Southeastern Asia
-        regionRotations[17] = new Vector3(0, 95, 87);
-        //Melanesia
-        regionRotations[18] = new Vector3(0, 140, 95);
-        //Polynesia
-        regionRotations[19] = new Vector3(0, 172, 102);
-        //Australia and NZ
-        regionRotations[20] = new Vector3(0, 130, 118);
-        //Hawaii
-        regionRotations[21] = new Vector3(0, 188, 70);
+        //defined here because Vector3s can only be initialized at runtime
+        //format:   y= rotation horizontally, 0 = vertical line intersecting Europe and Africa
+        //          x= rotation vertically, 0 = North pole, 180 = South pole
+        regionRotations = new Vector3[24];
+        regionRotations[NORTHERN_AMERICA] =     new Vector3(0, 240, 45);
+        regionRotations[CENTRAL_AMERICA] =      new Vector3(0, 250, 70);
+        regionRotations[CARIBBEAN] =            new Vector3(0, 270, 70);
+        regionRotations[SOUTH_AMERICA] =        new Vector3(0, 285, 110);
+
+        regionRotations[NORTHERN_EUROPE] =      new Vector3(0, 355, 30);
+        regionRotations[WESTERN_EUROPE] =       new Vector3(0, 350, 42);
+        regionRotations[SOUTHERN_EUROPE] =      new Vector3(0, 355, 50);
+        regionRotations[EASTERN_EUROPE] =       new Vector3(0, 45, 35);
+
+        regionRotations[NORTHERN_AFRICA] =      new Vector3(0, 0, 60);
+        regionRotations[WESTERN_AFRICA] =       new Vector3(0, 345, 70);
+        regionRotations[MIDDLE_AFRICA]=         new Vector3(0, 5, 90);
+        regionRotations[EASTERN_AFRICA] =       new Vector3(0, 23, 90);
+        regionRotations[SOUTHERN_AFRICA] =      new Vector3(0, 10, 115);
+
+        regionRotations[WESTERN_ASIA] =         new Vector3(0, 30, 60);
+        regionRotations[CENTRAL_ASIA] =         new Vector3(0, 52, 47);
+        regionRotations[SOUTHERN_ASIA] =        new Vector3(0, 60, 64);
+        regionRotations[EASTERN_ASIA] =         new Vector3(0, 90, 53);
+        regionRotations[SOUTHEASTERN_ASIA] =    new Vector3(0, 95, 87);
+
+        regionRotations[MELANESIA] =            new Vector3(0, 140, 95);
+        regionRotations[POLYNESIA] =            new Vector3(0, 172, 102);
+        regionRotations[AUSTRALIA_NZ] =         new Vector3(0, 130, 118);
+        regionRotations[HAWAII] =               new Vector3(0, 188, 70);
+
+        regionRotations[NORTH_POLE] =           new Vector3(0, 90, 5);
+        regionRotations[ANTARCTICA] =           new Vector3(0, 0, 175);
     }
 
     // Start is called before the first frame update
