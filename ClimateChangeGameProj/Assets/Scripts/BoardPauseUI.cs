@@ -11,12 +11,17 @@ public class BoardPauseUI : MonoBehaviour
 
     public Toggle pauseToggle;
     public GameObject pauseView;
-    public GameObject pauseButton;
-    public GameObject resumeButton;
+    public Button resumeButton;
+    public Button exitButton;
+
+    void Start() {
+        resumeButton.onClick.AddListener(ResumeGame);
+        exitButton.onClick.AddListener(ExitToMainMenu);
+    }
 
     public void ExitToMainMenu()
     {
-        //SceneManager.LoadScene(MAINGAME_SCREEN);
+        SceneManager.LoadScene(MAINGAME_SCREEN);
     }
 
     public void onPauseTogglePress()
@@ -24,15 +29,15 @@ public class BoardPauseUI : MonoBehaviour
         if(pauseToggle.isOn)
         {
             pauseView.SetActive(true);
-            pauseButton.SetActive(false);
-            resumeButton.SetActive(true);
         }
         else
         {
             pauseView.SetActive(false);
-            pauseButton.SetActive(true);
-            resumeButton.SetActive(false);
         }
+    }
+
+    public void ResumeGame() {
+        pauseToggle.isOn = false;
     }
 
 }
