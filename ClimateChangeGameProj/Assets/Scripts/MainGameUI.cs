@@ -22,9 +22,7 @@ public class MainGameUI : MonoBehaviour
 
     public void StartPuzzle()
     {
-        //Belle can uncomment this when she hooks up the puzzle screen
-        //SceneManager.LoadScene(PUZZLE_SCREEN);
-   
+        SceneManager.LoadScene(PUZZLE_SCREEN);   
     }
 
     public void onStatsTogglePress()
