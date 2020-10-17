@@ -21,6 +21,8 @@ public class BoardManager : MonoBehaviour
         }
 
         private void CreateBoard (float xOffset, float yOffset) {
+            //make a default canvas right here that spans the area the pieces will populate
+
             tiles = new GameObject[xSize, ySize];     
 
             float startX = transform.position.x;     // Finds starting position of board generation
@@ -32,7 +34,7 @@ public class BoardManager : MonoBehaviour
 
             for (int x = 0; x < xSize; x++) {      
                 for (int y = 0; y < ySize; y++) {
-                    GameObject newTile = Instantiate(tile, new Vector3(startX + (xOffset * x), startY +                                                                 (yOffset * y), 0), tile.transform.rotation);
+                    GameObject newTile = Instantiate(tile, new Vector3(startX + (xOffset * x), startY + (yOffset * y), 0), tile.transform.rotation);
                     tiles[x, y] = newTile;
                     newTile.transform.parent = transform; // parents all tiles
                     List<Sprite> possibleCharacters = new List<Sprite>(); 
