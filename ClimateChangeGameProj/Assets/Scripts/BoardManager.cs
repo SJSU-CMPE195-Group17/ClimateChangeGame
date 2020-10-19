@@ -7,7 +7,6 @@ public class BoardManager : MonoBehaviour
     public static BoardManager instance;     
         public List<Sprite> characters = new List<Sprite>();     //list of sprites used as tile pieces
         public GameObject tile;      // prefab instantiated 
-        public Canvas puzzleCanvas;
         public int xSize, ySize;   // board dimensions
 
         private GameObject[,] tiles;      // 2d-array that stores tiles
@@ -22,8 +21,6 @@ public class BoardManager : MonoBehaviour
         }
 
         private void CreateBoard (float xOffset, float yOffset) {
-            //make a default canvas right here that spans the area the pieces will populate
-
             tiles = new GameObject[xSize, ySize];     
 
             float startX = transform.position.x;     // Finds starting position of board generation
