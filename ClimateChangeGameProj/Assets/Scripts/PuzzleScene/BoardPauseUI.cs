@@ -11,6 +11,7 @@ public class BoardPauseUI : MonoBehaviour
 
     public Toggle pauseToggle;
     public GameObject pauseView;
+    public GameObject puzzleView;
     public Button resumeButton;
     public Button exitButton;
 
@@ -29,10 +30,12 @@ public class BoardPauseUI : MonoBehaviour
         if(pauseToggle.isOn)
         {
             pauseView.SetActive(true);
+            puzzleView.SetActive(false);
         }
         else
         {
             pauseView.SetActive(false);
+            puzzleView.SetActive(true);
         }
     }
 
