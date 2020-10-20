@@ -1326,13 +1326,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characters:
-  - {fileID: 21300000, guid: c5627e6b1a791e24491fc329e9db998a, type: 3}
-  - {fileID: 21300000, guid: ee16fe50ca403bf469239fe18f6130a1, type: 3}
+  - {fileID: 21300000, guid: 07c469b1bddeccf4698983962942f472, type: 3}
+  - {fileID: 21300000, guid: b9ed1157e47350849a4469c0372cee94, type: 3}
   - {fileID: 21300000, guid: 7727f52e047c0ea4ba9789dbd81e9ad7, type: 3}
-  - {fileID: 21300000, guid: 21d06996797fa2e4990a2860c99b2c2b, type: 3}
-  - {fileID: 21300000, guid: 587821ee74801b94ea2b6c9cb4aa8cd2, type: 3}
-  - {fileID: 21300000, guid: e941fdc6277aa944eb7c1e1b1b75a160, type: 3}
-  - {fileID: 21300000, guid: f51de939bc2ba124194cdcd16d50f89b, type: 3}
+  - {fileID: 21300000, guid: 7dd9123b0beb10f48bf6fe308bbe62fe, type: 3}
+  - {fileID: 21300000, guid: 2c6681b6993fb3d4f808d9a03529682f, type: 3}
+  - {fileID: 21300000, guid: 1ff5d6fba10b2b544ac75fe449d694cb, type: 3}
+  - {fileID: 21300000, guid: 9175634cb85ec4f4c9b9630f1883bdb6, type: 3}
   tile: {fileID: 287558214523780940, guid: 97014e4a544f84e799fc3b8fe8f4c069, type: 3}
   xSize: 7
   ySize: 7

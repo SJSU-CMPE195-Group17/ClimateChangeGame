@@ -23,8 +23,8 @@ public class BoardManager : MonoBehaviour
         private void CreateBoard (float xOffset, float yOffset) {
             tiles = new GameObject[xSize, ySize];     
 
-            float startX = transform.position.x;     // Finds starting position of board generation
-            float startY = transform.position.y;
+            float startX = transform.position.x - 3.5f;     // Finds starting position of board generation
+            float startY = transform.position.y - 3.7f;
 
             //prevent matching 3 combos by checking the bottom and left side of new tile
             Sprite[] previousLeft = new Sprite[ySize];
