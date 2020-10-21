@@ -19,6 +19,7 @@ public class BoardTile : MonoBehaviour
 
         if(!mouseDown && isSelected)
         {
+            Score(globalLastTileSelected);
             DeselectChain(globalLastTileSelected);
         }
 
@@ -31,8 +32,12 @@ public class BoardTile : MonoBehaviour
 
     private void Select()
     {
+        if(isSelected)
+        {
+            print("already Selected: " + numInChain);
+        }
         //no chain has begun
-        if(globalLastTileSelected == null)
+        else if(globalLastTileSelected == null)
         {
             isSelected = true;
             render.color = selectedColor;
@@ -54,6 +59,7 @@ public class BoardTile : MonoBehaviour
         //chain has begun but render does not match
         else
         {
+            Score(globalLastTileSelected);
             DeselectChain(globalLastTileSelected);
         }
 
@@ -75,6 +81,15 @@ public class BoardTile : MonoBehaviour
         {
             bt.DeselectChain(bt.previousSelected);
             bt.previousSelected = null;
+        }
+    }
+
+    private void Score(BoardTile bt)
+    {
+        if (bt.numInChain > 2)
+        {
+            print("Score: " + bt.numInChain + " " + globalLastTileSelected.render.sprite.name);
+            BoardManager.instance.totalScore += bt.numInChain;
         }
     }
 

@@ -1575,6 +1575,9 @@ MonoBehaviour:
   tile: {fileID: 287558214523780940, guid: 97014e4a544f84e799fc3b8fe8f4c069, type: 3}
   xSize: 11
   ySize: 7
+  totalScore: 0
+  scoreText: {fileID: 1475720718}
+  timeText: {fileID: 532662376}
 --- !u!210 &1100600125
 SortingGroup:
   m_ObjectHideFlags: 0

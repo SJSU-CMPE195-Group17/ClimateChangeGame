@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class BoardManager : MonoBehaviour
 {
@@ -8,14 +10,17 @@ public class BoardManager : MonoBehaviour
     public List<Sprite> characters = new List<Sprite>();     //list of sprites used as tile pieces
     public GameObject tile;      // prefab instantiated 
     public int xSize, ySize;   // board dimensions
-
     private GameObject[,] tiles;      // 2d-array that stores tiles
 
     public bool IsShifting { get; set; }     // tells the game if a match is found and will refill if so
+    public int totalScore;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI timeText;
 
     void Start () {
         instance = GetComponent<BoardManager>();     // 7
 
+        totalScore = 0;
         Vector2 offset = tile.GetComponent<SpriteRenderer>().bounds.size;
         CreateBoard(offset.x, offset.y);    
     }
@@ -23,6 +28,7 @@ public class BoardManager : MonoBehaviour
     private void Update()
     {
         //print(rectTransform.rect);
+        scoreText.text = "Score: " + totalScore;
     }
 
     private void CreateBoard (float xOffset, float yOffset) {
@@ -47,8 +53,8 @@ public class BoardManager : MonoBehaviour
         float startY = transform.position.y - ((ySize - 1) * deltaY / 2.0f);
 
         //prevent matching 3 combos by checking the bottom and left side of new tile
-        Sprite[] previousLeft = new Sprite[ySize];
-        Sprite previousBelow = null;
+        //Sprite[] previousLeft = new Sprite[ySize];
+        //Sprite previousBelow = null;
         
         for (int x = 0; x < xSize; x++)
         {
@@ -66,7 +72,7 @@ public class BoardManager : MonoBehaviour
                 Sprite newSprite = possibleCharacters[Random.Range(0, possibleCharacters.Count)]; // randomly choose one of the sprites
                 newTile.GetComponent<SpriteRenderer>().sprite = newSprite; // sets newly created sprite to the randomly chosen sprite
                 //previousLeft[y] = newSprite;
-                previousBelow = newSprite;
+                //previousBelow = newSprite;
             }
         }
         
