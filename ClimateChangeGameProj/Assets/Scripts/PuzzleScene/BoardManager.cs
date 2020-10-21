@@ -13,6 +13,7 @@ public class BoardManager : MonoBehaviour
     private GameObject[,] tiles;      // 2d-array that stores tiles
 
     public bool IsShifting { get; set; }     // tells the game if a match is found and will refill if so
+    public bool IsActive { get; set; }
     public int totalScore;
     public float timeRemaining;
     public bool timerIsRunning = false;
@@ -23,8 +24,9 @@ public class BoardManager : MonoBehaviour
         instance = GetComponent<BoardManager>();     // 7
 
         totalScore = 0;
-        timeRemaining = 60.0f;
+        timeRemaining = 10.0f;
         timerIsRunning = true;
+        IsActive = true;
         Vector2 offset = tile.GetComponent<SpriteRenderer>().bounds.size;
         CreateBoard(offset.x, offset.y);    
     }
@@ -43,6 +45,7 @@ public class BoardManager : MonoBehaviour
                 Debug.Log("Time's up!");
                 timeRemaining = 0; // lock the timer so it doesn't turn negative
                 timerIsRunning = false;
+                IsActive = false;
             }
         }
     }

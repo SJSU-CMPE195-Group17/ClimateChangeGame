@@ -17,7 +17,7 @@ public class BoardTile : MonoBehaviour
     {
         mouseDown = Input.GetMouseButton(0);
 
-        if(!mouseDown && isSelected)
+        if(!mouseDown && isSelected && BoardManager.instance.IsActive)
         {
             Score(globalLastTileSelected);
             DeselectChain(globalLastTileSelected);
@@ -95,7 +95,7 @@ public class BoardTile : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (render.sprite == null || BoardManager.instance.IsShifting)
+        if (render.sprite == null || !BoardManager.instance.IsActive)
         {
             return;
         }
@@ -104,7 +104,7 @@ public class BoardTile : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        if (render.sprite == null || BoardManager.instance.IsShifting || !mouseDown)
+        if (render.sprite == null || !BoardManager.instance.IsActive || !mouseDown)
         {
             return;
         }
