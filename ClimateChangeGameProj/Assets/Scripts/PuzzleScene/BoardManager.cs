@@ -14,6 +14,8 @@ public class BoardManager : MonoBehaviour
 
     public bool IsShifting { get; set; }     // tells the game if a match is found and will refill if so
     public int totalScore;
+    public float timeRemaining;
+    public bool timerIsRunning = false;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timeText;
 
@@ -21,6 +23,8 @@ public class BoardManager : MonoBehaviour
         instance = GetComponent<BoardManager>();     // 7
 
         totalScore = 0;
+        timeRemaining = 60.0f;
+        timerIsRunning = true;
         Vector2 offset = tile.GetComponent<SpriteRenderer>().bounds.size;
         CreateBoard(offset.x, offset.y);    
     }
@@ -29,6 +33,27 @@ public class BoardManager : MonoBehaviour
     {
         //print(rectTransform.rect);
         scoreText.text = "Score: " + totalScore;
+
+        if (timerIsRunning) {
+            if (timeRemaining > 0) {
+                timeRemaining -= Time.deltaTime;
+                DisplayTimeMS(timeRemaining);
+            }
+            else {
+                Debug.Log("Time's up!");
+                timeRemaining = 0; // lock the timer so it doesn't turn negative
+                timerIsRunning = false;
+            }
+        }
+    }
+
+    // Display time left in minutes and seconds
+    void DisplayTimeMS(float time) {
+        time += 1;
+        float minutes = Mathf.FloorToInt(time / 60);
+        float seconds = Mathf.FloorToInt(time % 60);
+
+        timeText.text = "Time: " + string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     private void CreateBoard (float xOffset, float yOffset) {
