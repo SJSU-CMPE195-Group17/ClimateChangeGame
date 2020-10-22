@@ -24,7 +24,7 @@ public class BoardManager : MonoBehaviour
         instance = GetComponent<BoardManager>();     // 7
 
         totalScore = 0;
-        timeRemaining = 10.0f;
+        timeRemaining = 60.0f;
         timerIsRunning = true;
         IsActive = true;
         Vector2 offset = tile.GetComponent<SpriteRenderer>().bounds.size;

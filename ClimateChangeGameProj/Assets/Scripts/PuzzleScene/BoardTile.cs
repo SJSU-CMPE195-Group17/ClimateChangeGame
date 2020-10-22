@@ -7,6 +7,7 @@ public class BoardTile : MonoBehaviour
     private static Color selectedColor = new Color(.5f, .5f, .5f, 1.0f);
     private static BoardTile globalLastTileSelected = null;
     private BoardTile previousSelected = null;
+    private BoardTile nextSelected = null;
     private int numInChain = 0;
 
     private SpriteRenderer render;
@@ -20,7 +21,7 @@ public class BoardTile : MonoBehaviour
         if(!mouseDown && isSelected && BoardManager.instance.IsActive)
         {
             Score(globalLastTileSelected);
-            DeselectChain(globalLastTileSelected);
+            DeselectChainBackwards(globalLastTileSelected);
         }
 
     }
@@ -32,9 +33,15 @@ public class BoardTile : MonoBehaviour
 
     private void Select()
     {
+        //this tile has already been selected
         if(isSelected)
         {
             print("already Selected: " + numInChain);
+            if (nextSelected != null)
+            {
+                DeselectChainForwards(nextSelected);
+                globalLastTileSelected = this;
+            }
         }
         //no chain has begun
         else if(globalLastTileSelected == null)
@@ -51,16 +58,22 @@ public class BoardTile : MonoBehaviour
             
             isSelected = true;
             render.color = selectedColor;
+            //set this local tiles previous
             previousSelected = globalLastTileSelected;
+            //increment numInChain
             numInChain = previousSelected.numInChain + 1;
-            print("new tile to chain: " + numInChain);
+            //set global last tile selected tot his
             globalLastTileSelected = gameObject.GetComponent<BoardTile>();
+            //set local previous's next to this
+            previousSelected.nextSelected = globalLastTileSelected;
+
+            print("new tile to chain: " + numInChain);
         }
         //chain has begun but render does not match
         else
         {
             Score(globalLastTileSelected);
-            DeselectChain(globalLastTileSelected);
+            DeselectChainBackwards(globalLastTileSelected);
         }
 
         //SFXManager.instance.PlaySFX(Clip.Select);
@@ -74,13 +87,25 @@ public class BoardTile : MonoBehaviour
         globalLastTileSelected = null;
     }
 
-    private void DeselectChain(BoardTile bt)
+    private void DeselectChainBackwards(BoardTile bt)
     {
+        bt.nextSelected = null;
         bt.Deselect();
         if (bt.previousSelected != null)
         {
-            bt.DeselectChain(bt.previousSelected);
+            bt.DeselectChainBackwards(bt.previousSelected);
             bt.previousSelected = null;
+        }
+    }
+
+    private void DeselectChainForwards(BoardTile bt)
+    {
+        bt.previousSelected = null;
+        bt.Deselect();
+        if (bt.nextSelected != null)
+        {
+            bt.DeselectChainForwards(bt.nextSelected);
+            bt.nextSelected = null;
         }
     }
 
