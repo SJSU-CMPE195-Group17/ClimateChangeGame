@@ -12,23 +12,36 @@ public class BoardTile : MonoBehaviour
     //test belle public float timeLeft;
 
     private SpriteRenderer render;
-    private bool isSelected = false;
+
+    private enum tileState { neutral, selected, randomizing };
+    private tileState currState;
+    private float randomizingTimer = 0.0f;
+
     private bool mouseDown;
 
     void Update()
     {
         mouseDown = Input.GetMouseButton(0);
 
-        //test belle
-        // if (timeLeft == 0) 
-        // {
-        //     Deselect();
-        // }
-
-        if(!mouseDown && isSelected && BoardManager.instance.IsActive)
+        if (currState == tileState.randomizing)
         {
-            Score(globalLastTileSelected);
-            DeselectChainBackwards(globalLastTileSelected);
+            if (randomizingTimer > 0)
+            {
+                randomizingTimer -= Time.deltaTime;
+            }
+            else
+            {
+                Debug.Log("Tile Timer finished");
+                SetDeselected();
+                randomizingTimer = 0.0f; // lock the timer so it doesn't turn negative
+                currState = tileState.neutral;
+                RandomizeSprite();
+            }
+        }
+
+        if (!mouseDown && (globalLastTileSelected == this) && BoardManager.instance.IsActive)
+        {
+            ResolveDeselect();
         }
 
     }
@@ -42,8 +55,14 @@ public class BoardTile : MonoBehaviour
 
     private void Select()
     {
+        
+        if(currState == tileState.randomizing)
+        {
+            if(globalLastTileSelected != null)
+                ResolveDeselect();
+        }
         //this tile has already been selected
-        if(isSelected)
+        else if (currState == tileState.selected)
         {
             print("already Selected: " + numInChain);
             if (nextSelected != null)
@@ -55,7 +74,7 @@ public class BoardTile : MonoBehaviour
         //no chain has begun
         else if(globalLastTileSelected == null)
         {
-            isSelected = true;
+            currState = tileState.selected;
             render.color = selectedColor;
             numInChain = 1;
             print("new global tile: " + numInChain);
@@ -64,8 +83,8 @@ public class BoardTile : MonoBehaviour
         //chain has begun and render matches
         else if(globalLastTileSelected.render.sprite == render.sprite)
         {
-            
-            isSelected = true;
+
+            currState = tileState.selected;
             render.color = selectedColor;
             //set this local tiles previous
             previousSelected = globalLastTileSelected;
@@ -81,25 +100,51 @@ public class BoardTile : MonoBehaviour
         //chain has begun but render does not match
         else
         {
-            Score(globalLastTileSelected);
-            DeselectChainBackwards(globalLastTileSelected);
+            ResolveDeselect();
         }
 
         //SFXManager.instance.PlaySFX(Clip.Select);
     }
 
-    private void Deselect()
+    private void ResolveDeselect()
+    {
+        if (globalLastTileSelected.numInChain > 2)
+        {
+            Score(globalLastTileSelected);
+            float timerSet = 0.0f;
+            if(numInChain == 3)
+            {
+                timerSet = 7.0f;
+            }
+            else if(numInChain < 6)
+            {
+                timerSet = 5.0f;
+            }
+            else
+            {
+                timerSet = 7.0f / numInChain;
+            }
+
+            RandomizingChainBackwards(globalLastTileSelected, timerSet);
+        }
+        else
+        {
+            DeselectChainBackwards(globalLastTileSelected);
+        }
+        globalLastTileSelected = null;
+    }
+
+    private void SetDeselected()
     {
         numInChain = 0;
-        isSelected = false;
+        currState = tileState.neutral;
         render.color = Color.white;
-        globalLastTileSelected = null;
     }
 
     private void DeselectChainBackwards(BoardTile bt)
     {
         bt.nextSelected = null;
-        bt.Deselect();
+        bt.SetDeselected();
         if (bt.previousSelected != null)
         {
             bt.DeselectChainBackwards(bt.previousSelected);
@@ -110,7 +155,7 @@ public class BoardTile : MonoBehaviour
     private void DeselectChainForwards(BoardTile bt)
     {
         bt.previousSelected = null;
-        bt.Deselect();
+        bt.SetDeselected();
         if (bt.nextSelected != null)
         {
             bt.DeselectChainForwards(bt.nextSelected);
@@ -118,13 +163,37 @@ public class BoardTile : MonoBehaviour
         }
     }
 
+    private void SetRandomizing(float time)
+    {
+        print("Set rerolling: " + numInChain + " timer:" + time);
+        numInChain = 0;
+        currState = tileState.randomizing;
+        randomizingTimer = time;
+        render.color = Color.black;
+    }
+
+    private void RandomizingChainBackwards(BoardTile bt, float time)
+    {
+        bt.nextSelected = null;
+        bt.SetRandomizing(time);
+        if (bt.previousSelected != null)
+        {
+            bt.RandomizingChainBackwards(bt.previousSelected, time);
+            bt.previousSelected = null;
+        }
+    }
+
     private void Score(BoardTile bt)
     {
-        if (bt.numInChain > 2)
-        {
-            print("Score: " + bt.numInChain + " " + globalLastTileSelected.render.sprite.name);
-            BoardManager.instance.totalScore += bt.numInChain;
-        }
+        print("Score: " + bt.numInChain * 100 + " " + globalLastTileSelected.render.sprite.name);
+        BoardManager.instance.totalScore += bt.numInChain * 100;
+        if (bt.numInChain > BoardManager.instance.highestChain)
+            BoardManager.instance.highestChain = numInChain;
+    }
+
+    private void RandomizeSprite()
+    {
+        GetComponent<SpriteRenderer>().sprite = BoardManager.instance.getRandomSprite();
     }
 
     private void OnMouseDown()
