@@ -9,6 +9,7 @@ public class BoardTile : MonoBehaviour
     private BoardTile previousSelected = null;
     private BoardTile nextSelected = null;
     private int numInChain = 0;
+    //test belle public float timeLeft;
 
     private SpriteRenderer render;
     private bool isSelected = false;
@@ -17,6 +18,12 @@ public class BoardTile : MonoBehaviour
     void Update()
     {
         mouseDown = Input.GetMouseButton(0);
+
+        //test belle
+        // if (timeLeft == 0) 
+        // {
+        //     Deselect();
+        // }
 
         if(!mouseDown && isSelected && BoardManager.instance.IsActive)
         {
@@ -29,6 +36,8 @@ public class BoardTile : MonoBehaviour
     void Awake()
     {
         render = GetComponent<SpriteRenderer>();
+        //test belle
+        // timeLeft = GameObject.Find("Puzzle").GetComponent<BoardManager>().timeRemaining;
     }
 
     private void Select()
