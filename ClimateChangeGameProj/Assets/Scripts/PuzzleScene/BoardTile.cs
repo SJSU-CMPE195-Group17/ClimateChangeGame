@@ -9,7 +9,10 @@ public class BoardTile : MonoBehaviour
     private BoardTile previousSelected = null;
     private BoardTile nextSelected = null;
     private int numInChain = 0;
-    //test belle public float timeLeft;
+    
+    private GameObject bm;
+    private BoardManager bmScript;
+    float timeLeft;
 
     private SpriteRenderer render;
 
@@ -19,9 +22,23 @@ public class BoardTile : MonoBehaviour
 
     private bool mouseDown;
 
+    //initialize reference to Puzzle game object, BoardManager script and timeRemaining
+    void Start() {
+        bm = GameObject.Find("Puzzle");
+        bmScript = bm.GetComponent<BoardManager>();
+        timeLeft = bmScript.timeRemaining;
+    }
+
     void Update()
     {
         mouseDown = Input.GetMouseButton(0);
+
+        timeLeft = bmScript.timeRemaining;
+
+        //if time is up and there are still some tiles highlighted, deselect them
+        if (timeLeft == 0) {
+            SetDeselected();
+        }
 
         if (currState == tileState.randomizing)
         {
@@ -49,8 +66,6 @@ public class BoardTile : MonoBehaviour
     void Awake()
     {
         render = GetComponent<SpriteRenderer>();
-        //test belle
-        // timeLeft = GameObject.Find("Puzzle").GetComponent<BoardManager>().timeRemaining;
     }
 
     private void Select()
