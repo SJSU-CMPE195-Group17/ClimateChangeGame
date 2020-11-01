@@ -9,6 +9,13 @@ public class BoardTile : MonoBehaviour
     private BoardTile previousSelected = null;
     private BoardTile nextSelected = null;
     private int numInChain = 0;
+
+    //belle
+    // Vector2 nw = Vector2(-1,1);
+    // Vector2 sw = Vector2(-1,-1);
+    // Vector2 ne = Vector2(1,1);
+    // Vector2 se = Vector2(1,-1);
+    private Vector2[] allDirections = new Vector2[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right};
     
     private GameObject bm;
     private BoardManager bmScript;
@@ -228,4 +235,22 @@ public class BoardTile : MonoBehaviour
         }
         Select();
     }
+
+    //belle
+    // private BoardTile GetSurrounding(Vector2 castDir) {
+    //     RaycastHit2D hit = Physics2D.Raycast(transform.position, castDir);
+    //     if (hit.collider != null) {
+    //         return hit.collider.BoardTile;
+    //     }
+    //     return null;
+    // }
+
+    // //belle
+    // private List<BoardTile> GetAllSurroundingTiles() {
+    //     List<BoardTile> surrTiles = new List<BoardTile>();
+    //     for (int i = 0; i < allDirections.Length; i++) {
+    //         surrTiles.Add(GetSurrounding(allDirections[i]));
+    //     }
+    //     return surrTiles;
+    // }
 }
