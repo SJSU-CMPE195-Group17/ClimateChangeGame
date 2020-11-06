@@ -47,10 +47,17 @@ public class MainGameBackend : MonoBehaviour
     public Color MinBarColor = Color.yellow;
     public Color MaxBarColor = Color.red;
 
+    public GameObject mymultiplechoicequestions;
+
     // Start is called before the first frame update
     void Start()
     {
         updateGui();
+        //mymultiplechoicequestions.GetComponent<multiplechoicequestions>().AddQuestions("a text", "b text", "c text", "d text");
+    }
+
+    void update(){
+        
     }
 
     private void updateGui()
@@ -116,5 +123,14 @@ public class MainGameBackend : MonoBehaviour
             currYear += (currSeason + numOfSeasons)/4; 
         }
         currSeason = (currSeason + numOfSeasons) % 4;
+
+        if(glblTempVal > 2 && glblTempVal<2.05){
+            mymultiplechoicequestions.SetActive(true);
+        }
+        if(glblTempVal > 4){
+            mymultiplechoicequestions.SetActive(true);
+            mymultiplechoicequestions.GetComponent<multiplechoicequestions>().AddAnswers(4);
+        }
+
     }
 }
