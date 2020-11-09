@@ -31,16 +31,16 @@ public class multiplechoicequestions: MonoBehaviour
     }
 
     private void InitAllAnswers(){
-        allAnswers[0]="1 answer drought";
-        allAnswers[1]="2 answer drought";
-        allAnswers[2]="3 answer drought";
-        allAnswers[3]="4 answer drought";
+        allAnswers[0]="Prepare mass cloud-seeding deployments";
+        allAnswers[1]="Begin a region-wide stockpile and hope for the best";
+        allAnswers[2]="Create international network of supplies to support Austrailia";
+        allAnswers[3]="Hope the models are wrong";
         allAnswers[4]="5 answer drought";
         allAnswers[5]="6 answer drought";
         allAnswers[6]="7 answer drought";
         allAnswers[7]="8 answer drought";
 
-        allQuestions[0]="Questions1 drought";
+        allQuestions[0]="Droughts in Austrailia, Models predict a catastrophic 4-8 year drought in Austraila. What is your response?";
         allQuestions[1]="Questions2 drought";
 
     }

@@ -111,11 +111,11 @@ public class MainGameBackend : MonoBehaviour
 
         //climate change metrics here will change based off of climate change sim
         //in this extremely simple sim, it just increases by arbitrary values
-        glblTempVal += 0.01f * numOfSeasons;
-        oceanTempVal += 0.01f * numOfSeasons;
+        glblTempVal += 0.05f * numOfSeasons;
+        oceanTempVal += 0.05f * numOfSeasons;
         seaLvlVal += 0.8f * numOfSeasons;
-        iceSheetVal += 37f * numOfSeasons;
-        co2Val += 1.75f * numOfSeasons;
+        iceSheetVal += 70f * numOfSeasons;
+        co2Val += 3.75f * numOfSeasons;
 
         //increase season and year by appropriate amount
         if (currSeason + numOfSeasons > 3)
@@ -127,7 +127,7 @@ public class MainGameBackend : MonoBehaviour
         if(glblTempVal > 2 && glblTempVal<2.05){
             mymultiplechoicequestions.SetActive(true);
         }
-        if(glblTempVal > 4){
+        if(glblTempVal > 4 && glblTempVal < 4.05){
             mymultiplechoicequestions.SetActive(true);
             mymultiplechoicequestions.GetComponent<multiplechoicequestions>().AddAnswers(4);
         }
