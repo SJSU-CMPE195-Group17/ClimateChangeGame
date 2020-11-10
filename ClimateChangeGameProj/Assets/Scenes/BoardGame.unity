@@ -1210,8 +1210,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: 0}
-  m_SizeDelta: {x: 265, y: 50}
+  m_AnchoredPosition: {x: 88, y: 0}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &573760978
 MonoBehaviour:
@@ -2816,6 +2816,7 @@ MonoBehaviour:
   gameOverView: {fileID: 1429632437}
   puzzleView: {fileID: 286045620}
   mainMenuButton: {fileID: 1977267655}
+  finalScoreText: {fileID: 1948256874}
 --- !u!4 &1858488710
 Transform:
   m_ObjectHideFlags: 0
@@ -2864,8 +2865,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 38, y: 0}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1948256874
 MonoBehaviour:
@@ -2887,7 +2888,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Final Score:'
+  m_text: 'Final Score: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b355c824c9e334fd3be395b374eb468b, type: 2}
   m_sharedMaterial: {fileID: -9140118196098962516, guid: b355c824c9e334fd3be395b374eb468b, type: 2}
