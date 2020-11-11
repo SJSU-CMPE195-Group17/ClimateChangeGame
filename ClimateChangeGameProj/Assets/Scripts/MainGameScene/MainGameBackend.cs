@@ -134,4 +134,14 @@ public class MainGameBackend : MonoBehaviour
             mymultiplechoicequestions.GetComponent<multiplechoicequestions>().AddAnswers(4);
         }
     }
+
+    public void changeResourcesAndStatistics(int myMoneyVal, int myScienceVal, int myGlobalCoopVal, int myEducationVal)
+    {
+        moneyVal += myMoneyVal;
+        scienceVal += myScienceVal;
+        globalCoopVal += myGlobalCoopVal;
+        educationVal += myEducationVal;
+        
+        updateGui();
+    }
 }
