@@ -55,7 +55,7 @@ public class BoardTile : MonoBehaviour
             }
             else
             {
-                Debug.Log("Tile Timer finished");
+                //Debug.Log("Tile Timer finished");
                 SetDeselected();
                 randomizingTimer = 0.0f; // lock the timer so it doesn't turn negative
                 currState = tileState.neutral;
@@ -99,7 +99,7 @@ public class BoardTile : MonoBehaviour
             currState = tileState.selected;
             render.color = selectedColor;
             numInChain = 1;
-            print("new global tile: " + numInChain);
+            //print("new global tile: " + numInChain);
             globalLastTileSelected = gameObject.GetComponent<BoardTile>();
         }
         //chain has begun and render matches
@@ -117,7 +117,7 @@ public class BoardTile : MonoBehaviour
             //set local previous's next to this
             previousSelected.nextSelected = globalLastTileSelected;
 
-            print("new tile to chain: " + numInChain);
+            //print("new tile to chain: " + numInChain);
         }
         //chain has begun but render does not match
         else
@@ -187,7 +187,7 @@ public class BoardTile : MonoBehaviour
 
     private void SetRandomizing(float time)
     {
-        print("Set rerolling: " + numInChain + " timer:" + time);
+        //print("Set rerolling: " + numInChain + " timer:" + time);
         numInChain = 0;
         currState = tileState.randomizing;
         randomizingTimer = time;
@@ -207,8 +207,72 @@ public class BoardTile : MonoBehaviour
 
     private void Score(BoardTile bt)
     {
-        print("Score: " + bt.numInChain * 100 + " " + globalLastTileSelected.render.sprite.name);
-        BoardManager.instance.totalScore += bt.numInChain * 100;
+        int scaledScore;
+        if (bt.numInChain < 7)
+        {
+            scaledScore = (bt.numInChain - 3) * 2 + 3;
+        }
+        else if(bt.numInChain < 13)
+        {
+            scaledScore = (bt.numInChain - 3) * 3 + 3;
+        }
+        else
+        {
+            scaledScore = (bt.numInChain - 3) * 4 + 3;
+        }
+
+        //Resource Allocation
+        if(globalLastTileSelected.render.sprite.name == "Icon_Book2")
+        {
+            print("Education " + scaledScore);
+            BoardManager.instance.educationVal += scaledScore;
+        }
+        else if(globalLastTileSelected.render.sprite.name == "Icon_Earth_n")
+        {
+            print("Coop " + scaledScore);
+            BoardManager.instance.globalCoopVal += scaledScore;
+        }
+        else if (globalLastTileSelected.render.sprite.name == "Icon_Money4")
+        {
+            print("Money " + scaledScore);
+            BoardManager.instance.moneyVal += scaledScore;
+        }
+        else if (globalLastTileSelected.render.sprite.name == "Icon_Bottle")
+        {
+            print("Science " + scaledScore);
+            BoardManager.instance.scienceVal += scaledScore;
+        }
+        else
+        {
+
+            for(int i = 0; i < scaledScore; i++)
+            {
+                int r = Random.Range(0, 4);
+                switch(r)
+                {
+                    case 0:
+                        print("Education 1");
+                        BoardManager.instance.educationVal++;
+                        break;
+                    case 1:
+                        print("Coop 1");
+                        BoardManager.instance.globalCoopVal++;
+                        break;
+                    case 2:
+                        print("Money 1");
+                        BoardManager.instance.moneyVal++;
+                        break;
+                    case 3:
+                        print("Science 1");
+                        BoardManager.instance.scienceVal++;
+                        break;
+
+                }
+            }
+            print("Other" + scaledScore);
+        }
+
+        BoardManager.instance.totalScore += scaledScore * 100;
         if (bt.numInChain > BoardManager.instance.highestChain)
             BoardManager.instance.highestChain = numInChain;
     }

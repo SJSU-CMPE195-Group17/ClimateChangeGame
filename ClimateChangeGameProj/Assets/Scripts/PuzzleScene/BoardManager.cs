@@ -21,9 +21,21 @@ public class BoardManager : MonoBehaviour
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI chainText;
 
+    public int moneyVal;
+    public int scienceVal;
+    public int globalCoopVal;
+    public int educationVal;
+    public TextMeshProUGUI moneyText;
+    public TextMeshProUGUI scienceText;
+    public TextMeshProUGUI globalCoopText;
+    public TextMeshProUGUI educationText;
+
     void Start () {
         instance = GetComponent<BoardManager>();     // 7
-
+        moneyVal = 0;
+        scienceVal = 0;
+        globalCoopVal = 0;
+        educationVal = 0;
         totalScore = 0;
         highestChain = 0;
         timeRemaining = 60.0f;
@@ -51,6 +63,12 @@ public class BoardManager : MonoBehaviour
                 timeRemaining = 0; // lock the timer so it doesn't turn negative
                 timerIsRunning = false;
                 IsActive = false;
+
+                moneyVal *= 100000;
+                moneyText.text = "" + moneyVal;
+                scienceText.text = "" + scienceVal;
+                globalCoopText.text = "" + globalCoopVal;
+                educationText.text = "" + educationVal;
             }
         }
     }
