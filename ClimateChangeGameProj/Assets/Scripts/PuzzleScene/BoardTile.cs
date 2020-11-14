@@ -29,6 +29,10 @@ public class BoardTile : MonoBehaviour
 
     private bool mouseDown;
 
+    public Transform explosion;
+    public Transform spawnEmitter;
+    private bool emitterStarted = false;
+
     //initialize reference to Puzzle game object, BoardManager script and timeRemaining
     void Start() {
         bm = GameObject.Find("Puzzle");
@@ -49,6 +53,12 @@ public class BoardTile : MonoBehaviour
 
         if (currState == tileState.randomizing)
         {
+            if (randomizingTimer < 1.1 && spawnEmitter && !emitterStarted)
+            {
+                GameObject emitter = ((Transform)Instantiate(spawnEmitter, this.transform.position, this.transform.rotation)).gameObject;
+                Destroy(emitter, 2f);
+                emitterStarted = true;
+            }
             if (randomizingTimer > 0)
             {
                 randomizingTimer -= Time.deltaTime;
@@ -60,6 +70,7 @@ public class BoardTile : MonoBehaviour
                 randomizingTimer = 0.0f; // lock the timer so it doesn't turn negative
                 currState = tileState.neutral;
                 RandomizeSprite();
+                emitterStarted = false;
             }
         }
 
@@ -191,7 +202,12 @@ public class BoardTile : MonoBehaviour
         numInChain = 0;
         currState = tileState.randomizing;
         randomizingTimer = time;
-        render.color = Color.black;
+        render.color = new Color(1f,1f,1f,0f);
+        if (explosion)
+        {
+            GameObject exploder = ((Transform)Instantiate(explosion, this.transform.position, this.transform.rotation)).gameObject;
+            Destroy(exploder, 2.0f);
+        }
     }
 
     private void RandomizingChainBackwards(BoardTile bt, float time)
@@ -222,22 +238,22 @@ public class BoardTile : MonoBehaviour
         }
 
         //Resource Allocation
-        if(globalLastTileSelected.render.sprite.name == "Icon_Book2")
+        if(globalLastTileSelected.render.sprite.name == "P_Education")
         {
             print("Education " + scaledScore);
             BoardManager.instance.educationVal += scaledScore;
         }
-        else if(globalLastTileSelected.render.sprite.name == "Icon_Earth_n")
+        else if(globalLastTileSelected.render.sprite.name == "P_Coop")
         {
             print("Coop " + scaledScore);
             BoardManager.instance.globalCoopVal += scaledScore;
         }
-        else if (globalLastTileSelected.render.sprite.name == "Icon_Money4")
+        else if (globalLastTileSelected.render.sprite.name == "P_Money")
         {
             print("Money " + scaledScore);
             BoardManager.instance.moneyVal += scaledScore;
         }
-        else if (globalLastTileSelected.render.sprite.name == "Icon_Bottle")
+        else if (globalLastTileSelected.render.sprite.name == "P_Science")
         {
             print("Science " + scaledScore);
             BoardManager.instance.scienceVal += scaledScore;
