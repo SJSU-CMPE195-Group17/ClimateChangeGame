@@ -64,8 +64,7 @@ public class BoardManager : MonoBehaviour
                 timerIsRunning = false;
                 IsActive = false;
 
-                moneyVal *= 100000;
-                moneyText.text = "" + moneyVal;
+                moneyText.text = "" + moneyVal + "M";
                 scienceText.text = "" + scienceVal;
                 globalCoopText.text = "" + globalCoopVal;
                 educationText.text = "" + educationVal;

@@ -760,7 +760,6 @@ GameObject:
   m_Component:
   - component: {fileID: 376039240}
   - component: {fileID: 376039241}
-  - component: {fileID: 376039242}
   m_Layer: 5
   m_Name: MoneyContainer
   m_TagString: Untagged
@@ -786,8 +785,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 105.947205, y: -36}
-  m_SizeDelta: {x: 211.89444, y: 72}
+  m_AnchoredPosition: {x: 98.49536, y: -36}
+  m_SizeDelta: {x: 196.99072, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &376039241
 MonoBehaviour:
@@ -815,26 +814,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &376039242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376039239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreLayout: 0
-  m_MinWidth: -1
-  m_MinHeight: -1
-  m_PreferredWidth: 200
-  m_PreferredHeight: -1
-  m_FlexibleWidth: -1
-  m_FlexibleHeight: -1
-  m_LayoutPriority: 1
 --- !u!1 &486253890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,8 +1117,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 307.90585, y: -36}
-  m_SizeDelta: {x: 192.02283, y: 72}
+  m_AnchoredPosition: {x: 295.48608, y: -36}
+  m_SizeDelta: {x: 196.99072, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &502903061
 MonoBehaviour:
@@ -1456,8 +1435,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 499.92868, y: -36}
-  m_SizeDelta: {x: 192.02283, y: 72}
+  m_AnchoredPosition: {x: 492.4768, y: -36}
+  m_SizeDelta: {x: 196.99072, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &552777057
 MonoBehaviour:
@@ -3341,6 +3320,62 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &1357930101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1357930103}
+  - component: {fileID: 1357930102}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1357930102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357930101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82a19078d60c9f343b4d597830737ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Disappear
+    clip: {fileID: 8300000, guid: 130a177e727814a2ea78a886ab72213d, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Select
+    clip: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &1357930103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357930101}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.82163465, y: 0.12204209, z: 52.17781}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1363377737
 GameObject:
   m_ObjectHideFlags: 0
@@ -3715,8 +3750,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 691.9515, y: -36}
-  m_SizeDelta: {x: 192.02283, y: 72}
+  m_AnchoredPosition: {x: 689.4675, y: -36}
+  m_SizeDelta: {x: 196.99072, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1748242148
 MonoBehaviour:

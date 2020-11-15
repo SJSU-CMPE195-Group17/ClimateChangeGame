@@ -112,6 +112,7 @@ public class BoardTile : MonoBehaviour
             numInChain = 1;
             //print("new global tile: " + numInChain);
             globalLastTileSelected = gameObject.GetComponent<BoardTile>();
+            AudioManager.instance.PlayPitch("Select", 1f);
         }
         //chain has begun and render matches
         else if(globalLastTileSelected.render.sprite == render.sprite)
@@ -127,6 +128,7 @@ public class BoardTile : MonoBehaviour
             globalLastTileSelected = gameObject.GetComponent<BoardTile>();
             //set local previous's next to this
             previousSelected.nextSelected = globalLastTileSelected;
+            AudioManager.instance.PlayPitch("Select", 0.8f + 0.2f*numInChain);
 
             //print("new tile to chain: " + numInChain);
         }
@@ -157,7 +159,7 @@ public class BoardTile : MonoBehaviour
             {
                 timerSet = 7.0f / numInChain;
             }
-
+            AudioManager.instance.PlayPitch("Disappear", 0.7f + 0.1f * numInChain);
             RandomizingChainBackwards(globalLastTileSelected, timerSet);
         }
         else
@@ -224,11 +226,11 @@ public class BoardTile : MonoBehaviour
     private void Score(BoardTile bt)
     {
         int scaledScore;
-        if (bt.numInChain < 7)
+        if (bt.numInChain < 5)
         {
             scaledScore = (bt.numInChain - 3) * 2 + 3;
         }
-        else if(bt.numInChain < 13)
+        else if(bt.numInChain < 8)
         {
             scaledScore = (bt.numInChain - 3) * 3 + 3;
         }
