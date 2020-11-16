@@ -1,11 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
+using System.Xml;
+using System.Xml.Linq;
 using UnityEngine.UI;
 
 public class MainGameBackend : MonoBehaviour
 {
+    const string DATABASE_PATH = "/users/isabellelow/Desktop/ClimateChangeGame/ClimateChangeGameProj/Assets/Resources/Resources.xml";
+    private XDocument doc = XDocument.Load(DATABASE_PATH);
+
     public TextMeshProUGUI dateText;
     public TextMeshProUGUI moneyText;
     public TextMeshProUGUI scienceText;
@@ -55,6 +62,12 @@ public class MainGameBackend : MonoBehaviour
 
     private void updateGui()
     {
+        //Loads all saved quantity into variables 
+        moneyVal = getResourceValues("Money");
+        scienceVal = getResourceValues("Science");
+        globalCoopVal = getResourceValues("Global Cooperation");
+        educationVal = getResourceValues("Education");
+
         //update text values
         moneyText.text = "" + moneyVal + "M";
         scienceText.text = "" + scienceVal;
@@ -116,5 +129,18 @@ public class MainGameBackend : MonoBehaviour
             currYear += (currSeason + numOfSeasons)/4; 
         }
         currSeason = (currSeason + numOfSeasons) % 4;
+    }
+
+    //Retrieve resource quantity from xml file
+    private int getResourceValues(string resourceName) {
+        List<XElement> allResources = doc.Root.Descendants().ToList();
+        
+        var result = allResources.Elements("Resource").
+            First(x => x.Element("Name").Value.Equals(resourceName));
+
+        string amountText = result.Element("Amount").Value;
+        int parsedResourceAmount = Int32.Parse(amountText);
+        
+        return parsedResourceAmount;
     }
 }

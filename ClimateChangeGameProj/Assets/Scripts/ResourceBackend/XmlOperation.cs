@@ -2,7 +2,7 @@
 using System.Xml.Serialization;
 
 public static class XmlOperation
-{
+{    
     public static void Serialize(object item, string path)
     {
         XmlSerializer serializer = new XmlSerializer(item.GetType());
@@ -11,12 +11,14 @@ public static class XmlOperation
         writer.Close();
     }
 
-    public static T Deserialize<T>(string path)
+    public static ResourcesContainer Deserialize(string path)
     {
-        XmlSerializer serializer = new XmlSerializer(typeof(T));
+        XmlSerializer serializer = new XmlSerializer(typeof(ResourcesContainer));
         StreamReader reader = new StreamReader(path);
-        T deserialized = (T)serializer.Deserialize(reader.BaseStream);
+        ResourcesContainer deserialized = serializer.Deserialize(reader.BaseStream) as ResourcesContainer;
         reader.Close();
         return deserialized;
     }
+
+
 }

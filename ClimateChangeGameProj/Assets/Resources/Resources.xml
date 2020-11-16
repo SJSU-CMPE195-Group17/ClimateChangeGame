@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<ResourcesList xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Resources>
+    <Resource>
+      <Name>Money</Name>
+      <Amount>10</Amount>
+    </Resource>
+    <Resource>
+      <Name>Science</Name>
+      <Amount>10</Amount>
+    </Resource>
+    <Resource>
+      <Name>Global Cooperation</Name>
+      <Amount>10</Amount>
+    </Resource>
+    <Resource>
+      <Name>Education</Name>
+      <Amount>10</Amount>
+    </Resource>
+  </Resources>
+</ResourcesList>
