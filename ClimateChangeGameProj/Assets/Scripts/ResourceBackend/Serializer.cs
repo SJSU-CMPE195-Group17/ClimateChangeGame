@@ -10,7 +10,7 @@ public class Serializer : MonoBehaviour
 
     void Start()
     {
-        // updateXml(10, 10, 10, 10);
+        // updateXml(40, 40, 40, 40);
     }
 
     void initializeXml() {
