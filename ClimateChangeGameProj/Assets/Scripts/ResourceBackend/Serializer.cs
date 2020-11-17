@@ -3,14 +3,15 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-//To retrieve and update values, go to MainGameBackend.
+//To reset values, uncomment initializeXml method
 public class Serializer : MonoBehaviour
 {
+    //Change path name to your ProjDir/Assets/Resources
     private const string path = "/users/isabellelow/Desktop/ClimateChangeGame/ClimateChangeGameProj/Assets/Resources/Resources.xml";
 
     void Start()
-    {
-        // updateXml(40, 40, 40, 40);
+    {  
+        //initializeXml();
     }
 
     void initializeXml() {
@@ -18,25 +19,25 @@ public class Serializer : MonoBehaviour
         resourcesContainer.resourcesContainers.Add(new Resource
         {
             name = "Money",
-            totalAmount = 0
+            totalAmount = 40
         });
 
         resourcesContainer.resourcesContainers.Add(new Resource
         {
             name = "Science",
-            totalAmount = 0
+            totalAmount = 40
         });
 
         resourcesContainer.resourcesContainers.Add(new Resource
         {
             name = "Global Cooperation",
-            totalAmount = 0
+            totalAmount = 40
         });   
 
         resourcesContainer.resourcesContainers.Add(new Resource
         {
             name = "Education",
-            totalAmount = 0
+            totalAmount = 40
         });
 
         /*
@@ -46,7 +47,7 @@ public class Serializer : MonoBehaviour
         XmlOperation.Serialize(resourcesContainer, Path.Combine(Application.persistentDataPath, path));
     }
 
-    void updateXml(int moneyAmt, int scienceAmt, int globalCoopAmt, int educationAmt) {
+    public static void updateXml(int moneyAmt, int scienceAmt, int globalCoopAmt, int educationAmt) {
         ResourcesContainer resourcesContainer = new ResourcesContainer();
         resourcesContainer.resourcesContainers.Add(new Resource
         {

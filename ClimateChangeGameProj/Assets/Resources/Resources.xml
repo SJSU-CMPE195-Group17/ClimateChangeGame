@@ -3,19 +3,19 @@
   <Resources>
     <Resource>
       <Name>Money</Name>
-      <Amount>40</Amount>
+      <Amount>71</Amount>
     </Resource>
     <Resource>
       <Name>Science</Name>
-      <Amount>40</Amount>
+      <Amount>78</Amount>
     </Resource>
     <Resource>
       <Name>Global Cooperation</Name>
-      <Amount>40</Amount>
+      <Amount>97</Amount>
     </Resource>
     <Resource>
       <Name>Education</Name>
-      <Amount>40</Amount>
+      <Amount>86</Amount>
     </Resource>
   </Resources>
 </ResourcesList>

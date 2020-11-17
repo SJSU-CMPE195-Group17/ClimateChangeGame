@@ -1,8 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Linq;
+using System.Xml;
+using System.Xml.Linq;
+using Random=UnityEngine.Random;
 
 public class BoardManager : MonoBehaviour
 {
@@ -29,6 +34,15 @@ public class BoardManager : MonoBehaviour
     public TextMeshProUGUI scienceText;
     public TextMeshProUGUI globalCoopText;
     public TextMeshProUGUI educationText;
+
+    //Change path name to your ProjDir/Assets/Resources 
+    const string DATABASE_PATH = "/users/isabellelow/Desktop/ClimateChangeGame/ClimateChangeGameProj/Assets/Resources/Resources.xml";
+    private XDocument doc = XDocument.Load(DATABASE_PATH);
+
+    private int updatedMoneyVal;
+    private int updatedScienceVal;
+    private int updatedGlobalCoopVal;
+    private int updatedEducationVal;
 
     void Start () {
         instance = GetComponent<BoardManager>();     // 7
@@ -68,6 +82,13 @@ public class BoardManager : MonoBehaviour
                 scienceText.text = "" + scienceVal;
                 globalCoopText.text = "" + globalCoopVal;
                 educationText.text = "" + educationVal;
+
+                updatedMoneyVal = getResourceValues("Money") + moneyVal;
+                updatedScienceVal = getResourceValues("Science") + scienceVal;
+                updatedGlobalCoopVal = getResourceValues("Global Cooperation") + globalCoopVal;
+                updatedEducationVal = getResourceValues("Education") + educationVal;
+                
+                Serializer.updateXml(updatedMoneyVal, updatedScienceVal, updatedGlobalCoopVal, updatedEducationVal);
             }
         }
     }
@@ -119,5 +140,18 @@ public class BoardManager : MonoBehaviour
     public Sprite getRandomSprite()
     {
         return characters[Random.Range(0, characters.Count)];
+    }
+
+    //Retrieve resource quantity from xml file
+    private int getResourceValues(string resourceName) {
+        List<XElement> allResources = doc.Root.Descendants().ToList();
+        
+        var result = allResources.Elements("Resource").
+            First(x => x.Element("Name").Value.Equals(resourceName));
+
+        string amountText = result.Element("Amount").Value;
+        int parsedResourceAmount = Int32.Parse(amountText);
+        
+        return parsedResourceAmount;
     }
 }

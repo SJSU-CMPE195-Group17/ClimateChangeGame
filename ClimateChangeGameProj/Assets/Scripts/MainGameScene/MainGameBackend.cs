@@ -10,6 +10,7 @@ using UnityEngine.UI;
 
 public class MainGameBackend : MonoBehaviour
 {
+    //Change path name to your ProjDir/Assets/Resources
     const string DATABASE_PATH = "/users/isabellelow/Desktop/ClimateChangeGame/ClimateChangeGameProj/Assets/Resources/Resources.xml";
     private XDocument doc = XDocument.Load(DATABASE_PATH);
 
