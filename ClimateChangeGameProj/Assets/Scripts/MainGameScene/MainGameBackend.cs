@@ -10,9 +10,8 @@ using UnityEngine.UI;
 
 public class MainGameBackend : MonoBehaviour
 {
-    //Change path name to your ProjDir/Assets/Resources
-    const string DATABASE_PATH = "/users/isabellelow/Desktop/ClimateChangeGame/ClimateChangeGameProj/Assets/Resources/Resources.xml";
-    private XDocument doc = XDocument.Load(DATABASE_PATH);
+    const string LOCAL_PATH = Serializer.path;
+    //private XDocument doc = XDocument.Load(DATABASE_PATH);
 
     public TextMeshProUGUI dateText;
     public TextMeshProUGUI moneyText;
@@ -61,13 +60,26 @@ public class MainGameBackend : MonoBehaviour
         updateGui();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown("f1"))
+        {
+            setResourceValues(40, 40, 40, 40);
+        }
+        if (Input.GetKeyDown("f2"))
+        {
+            setResourceValues(161, 125, 87, 108);
+        }
+    }
+
     private void updateGui()
     {
         //Loads all saved quantity into variables 
-        moneyVal = getResourceValues("Money");
-        scienceVal = getResourceValues("Science");
-        globalCoopVal = getResourceValues("Global Cooperation");
-        educationVal = getResourceValues("Education");
+        int[] resourceValues = getResourceValues();
+        moneyVal = resourceValues[0];//getResourceValues("Money");
+        scienceVal = resourceValues[1];//getResourceValues("Science");
+        globalCoopVal = resourceValues[2];//getResourceValues("Global Cooperation");
+        educationVal = resourceValues[3];//getResourceValues("Education");
 
         //update text values
         moneyText.text = "" + moneyVal + "M";
@@ -134,14 +146,46 @@ public class MainGameBackend : MonoBehaviour
 
     //Retrieve resource quantity from xml file
     private int getResourceValues(string resourceName) {
-        List<XElement> allResources = doc.Root.Descendants().ToList();
+        XDocument doc = XDocument.Load(Application.persistentDataPath + LOCAL_PATH);
+        
+        //XDocument doc = Resources.Load<XDocument>("Resources.xml");
+        List <XElement> allResources = doc.Root.Descendants().ToList();
         
         var result = allResources.Elements("Resource").
             First(x => x.Element("Name").Value.Equals(resourceName));
 
         string amountText = result.Element("Amount").Value;
         int parsedResourceAmount = Int32.Parse(amountText);
-        
+
+        //print("GET Resource: " + resourceName + " Amount: " + parsedResourceAmount);
         return parsedResourceAmount;
+    }
+
+    private int[] getResourceValues()
+    {
+
+        XDocument doc = XDocument.Load(Application.persistentDataPath + LOCAL_PATH);
+        List<XElement> allResources = doc.Root.Descendants().ToList();
+        int[] resourceValues = new int[4];
+        string[] resourceNames = { "Money", "Science", "Global Cooperation", "Education" };
+        for(int i = 0; i < resourceValues.Length; i++)
+        {
+            var result = allResources.Elements("Resource").
+                First(x => x.Element("Name").Value.Equals(resourceNames[i]));
+
+            string amountText = result.Element("Amount").Value;
+            int parsedResourceAmount = Int32.Parse(amountText);
+
+            //print("GET Resource: " + resourceNames[i] + " Amount: " + parsedResourceAmount);
+            resourceValues[i] = parsedResourceAmount;
+        }
+        return resourceValues;
+    }
+
+    private void setResourceValues(int updatedMoneyVal, int updatedScienceVal, int updatedGlobalCoopVal, int updatedEducationVal)
+    {
+        print("Set Resources to: " + updatedMoneyVal + " " + updatedScienceVal + " " + updatedGlobalCoopVal + " " + updatedEducationVal);
+        Serializer.updateXml(updatedMoneyVal, updatedScienceVal, updatedGlobalCoopVal, updatedEducationVal);
+        updateGui();
     }
 }

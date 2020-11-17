@@ -36,8 +36,8 @@ public class BoardManager : MonoBehaviour
     public TextMeshProUGUI educationText;
 
     //Change path name to your ProjDir/Assets/Resources 
-    const string DATABASE_PATH = "/users/isabellelow/Desktop/ClimateChangeGame/ClimateChangeGameProj/Assets/Resources/Resources.xml";
-    private XDocument doc = XDocument.Load(DATABASE_PATH);
+    const string LOCAL_PATH = Serializer.path;
+    //private XDocument doc = XDocument.Load(DATABASE_PATH);
 
     private int updatedMoneyVal;
     private int updatedScienceVal;
@@ -52,7 +52,7 @@ public class BoardManager : MonoBehaviour
         educationVal = 0;
         totalScore = 0;
         highestChain = 0;
-        timeRemaining = 60.0f;
+        timeRemaining = 10.0f;
         timerIsRunning = true;
         IsActive = true;
         Vector2 offset = tile.GetComponent<SpriteRenderer>().bounds.size;
@@ -83,10 +83,11 @@ public class BoardManager : MonoBehaviour
                 globalCoopText.text = "" + globalCoopVal;
                 educationText.text = "" + educationVal;
 
-                updatedMoneyVal = getResourceValues("Money") + moneyVal;
-                updatedScienceVal = getResourceValues("Science") + scienceVal;
-                updatedGlobalCoopVal = getResourceValues("Global Cooperation") + globalCoopVal;
-                updatedEducationVal = getResourceValues("Education") + educationVal;
+                int[] resourceValues = getResourceValues();
+                updatedMoneyVal = resourceValues[0] + moneyVal;
+                updatedScienceVal = resourceValues[1] + scienceVal;
+                updatedGlobalCoopVal = resourceValues[2] + globalCoopVal;
+                updatedEducationVal = resourceValues[3] + educationVal;
                 
                 Serializer.updateXml(updatedMoneyVal, updatedScienceVal, updatedGlobalCoopVal, updatedEducationVal);
             }
@@ -144,6 +145,7 @@ public class BoardManager : MonoBehaviour
 
     //Retrieve resource quantity from xml file
     private int getResourceValues(string resourceName) {
+        XDocument doc = XDocument.Load(Application.persistentDataPath + LOCAL_PATH);
         List<XElement> allResources = doc.Root.Descendants().ToList();
         
         var result = allResources.Elements("Resource").
@@ -153,5 +155,25 @@ public class BoardManager : MonoBehaviour
         int parsedResourceAmount = Int32.Parse(amountText);
         
         return parsedResourceAmount;
+    }
+
+    private int[] getResourceValues()
+    {
+        XDocument doc = XDocument.Load(Application.persistentDataPath + LOCAL_PATH);
+        List<XElement> allResources = doc.Root.Descendants().ToList();
+        int[] resourceValues = new int[4];
+        string[] resourceNames = { "Money", "Science", "Global Cooperation", "Education" };
+        for (int i = 0; i < resourceValues.Length; i++)
+        {
+            var result = allResources.Elements("Resource").
+                First(x => x.Element("Name").Value.Equals(resourceNames[i]));
+
+            string amountText = result.Element("Amount").Value;
+            int parsedResourceAmount = Int32.Parse(amountText);
+
+            //print("GET Resource: " + resourceNames[i] + " Amount: " + parsedResourceAmount);
+            resourceValues[i] = parsedResourceAmount;
+        }
+        return resourceValues;
     }
 }

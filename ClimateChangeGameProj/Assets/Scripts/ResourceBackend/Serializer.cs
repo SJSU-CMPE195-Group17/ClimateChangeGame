@@ -7,11 +7,15 @@ using System.Xml.Serialization;
 public class Serializer : MonoBehaviour
 {
     //Change path name to your ProjDir/Assets/Resources
-    private const string path = "/users/isabellelow/Desktop/ClimateChangeGame/ClimateChangeGameProj/Assets/Resources/Resources.xml";
+    public const string path = "/Resources/Resources.xml";
+
 
     void Start()
-    {  
-        //initializeXml();
+    {
+        if (!Directory.Exists(Application.persistentDataPath + "/Resources"))
+            Directory.CreateDirectory(Application.persistentDataPath + "/Resources");
+        if (!File.Exists(Application.persistentDataPath + path))
+            initializeXml();
     }
 
     void initializeXml() {
@@ -44,7 +48,9 @@ public class Serializer : MonoBehaviour
         File is saved as Resources.xml under Assets/Resources directory in project
         Initialization of XML file
         */
-        XmlOperation.Serialize(resourcesContainer, Path.Combine(Application.persistentDataPath, path));
+        print("File Created" + Application.persistentDataPath + path);
+        XmlOperation.Serialize(resourcesContainer, Application.persistentDataPath + path);
+        
     }
 
     public static void updateXml(int moneyAmt, int scienceAmt, int globalCoopAmt, int educationAmt) {
@@ -77,7 +83,9 @@ public class Serializer : MonoBehaviour
         File is saved as Resources.xml under Assets/Resources directory in project
         Initialization of XML file
         */
-        XmlOperation.Serialize(resourcesContainer, Path.Combine(Application.persistentDataPath, path));
+        if (!File.Exists(Application.persistentDataPath + path))
+            Debug.LogWarning("File " + Application.persistentDataPath + path + " not found");
+        XmlOperation.Serialize(resourcesContainer, Application.persistentDataPath + path);
     }
 
     void loadXml() {
