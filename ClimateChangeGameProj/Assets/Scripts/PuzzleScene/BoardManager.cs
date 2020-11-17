@@ -52,7 +52,7 @@ public class BoardManager : MonoBehaviour
         educationVal = 0;
         totalScore = 0;
         highestChain = 0;
-        timeRemaining = 10.0f;
+        timeRemaining = 60.0f;
         timerIsRunning = true;
         IsActive = true;
         Vector2 offset = tile.GetComponent<SpriteRenderer>().bounds.size;
