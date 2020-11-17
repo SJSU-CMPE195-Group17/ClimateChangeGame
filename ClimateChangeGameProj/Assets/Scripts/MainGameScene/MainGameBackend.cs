@@ -42,22 +42,29 @@ public class MainGameBackend : MonoBehaviour
     private float oceanTempVal = 1.25f;//in deg F
     private float seaLvlVal = 94f;     //in mm
     private float iceSheetVal = 7200f; //in Gt
-    private float co2Val = 425f;       //in ppm
+    private float co2Val = 1050f;       //in ppm
 
     //estimate maxes for game over, we need to do research on what metrics would be catastrophic
-    private const float GLOBAL_TEMP_MAX = 7.2f;
-    private const float OCEAN_TEMP_MAX = 7.2f;
-    private const float SEA_LEVEL_MAX = 2000f;
-    private const float ICE_SHEET_MAX = 50000f;
-    private const float CO2_MAX = 1000f;
+    private const float GLOBAL_TEMP_MAX = 10.68f;   
+    private const float OCEAN_TEMP_MAX = 7.5f;  
+    private const float SEA_LEVEL_MAX = 564f; 
+    private const float ICE_SHEET_MAX = 43200f; 
+    private const float CO2_MAX = 6300f;
 
     public Color MinBarColor = Color.yellow;
     public Color MaxBarColor = Color.red;
+
+    public GameObject mymultiplechoicequestions;
 
     // Start is called before the first frame update
     void Start()
     {
         updateGui();
+        //mymultiplechoicequestions.GetComponent<multiplechoicequestions>().AddQuestions("a text", "b text", "c text", "d text");
+    }
+
+    void update(){
+        
     }
 
     private void Update()
@@ -130,18 +137,38 @@ public class MainGameBackend : MonoBehaviour
 
         //climate change metrics here will change based off of climate change sim
         //in this extremely simple sim, it just increases by arbitrary values
-        glblTempVal += 0.01f * numOfSeasons;
-        oceanTempVal += 0.01f * numOfSeasons;
-        seaLvlVal += 0.8f * numOfSeasons;
-        iceSheetVal += 37f * numOfSeasons;
-        co2Val += 1.75f * numOfSeasons;
+        glblTempVal += 0.356f * numOfSeasons;
+        oceanTempVal += 0.25f * numOfSeasons;
+        seaLvlVal += 18.8f * numOfSeasons;
+        iceSheetVal += 1440f * numOfSeasons;
+        co2Val += 210f * numOfSeasons;
 
         //increase season and year by appropriate amount
         if (currSeason + numOfSeasons > 3)
         {
-            currYear += (currSeason + numOfSeasons)/4; 
+            currYear += 15;
         }
         currSeason = (currSeason + numOfSeasons) % 4;
+    
+        if (glblTempVal > 2 && glblTempVal < 3.57)
+        {
+            mymultiplechoicequestions.SetActive(true);
+        }
+        if (glblTempVal > 4 && glblTempVal < 5.35)
+        {
+            mymultiplechoicequestions.SetActive(true);
+            mymultiplechoicequestions.GetComponent<multiplechoicequestions>().AddAnswers(4);
+        }
+    }
+
+    public void changeResourcesAndStatistics(int myMoneyVal, int myScienceVal, int myGlobalCoopVal, int myEducationVal)
+    {
+        moneyVal += myMoneyVal;
+        scienceVal += myScienceVal;
+        globalCoopVal += myGlobalCoopVal;
+        educationVal += myEducationVal;
+        
+        updateGui();
     }
 
     //Retrieve resource quantity from xml file
