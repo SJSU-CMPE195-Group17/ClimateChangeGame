@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameOverUI : MonoBehaviour
 {
@@ -12,10 +13,12 @@ public class GameOverUI : MonoBehaviour
     public GameObject gameOverView;
     public GameObject puzzleView;
     public Button mainMenuButton;
+    public TextMeshProUGUI finalScoreText;
 
     private GameObject bm;
     private BoardManager bmScript;
     float timeLeft;
+    int totalScore;
 
     void Start() {
         mainMenuButton.onClick.AddListener(ExitToMainMenu);
@@ -29,6 +32,8 @@ public class GameOverUI : MonoBehaviour
         timeLeft = bmScript.timeRemaining;
 
         if (timeLeft == 0) {
+            totalScore = bmScript.totalScore;
+            finalScoreText.text = "Final Score: " + totalScore;
             gameOverView.SetActive(true);
             puzzleView.SetActive(false);
         }

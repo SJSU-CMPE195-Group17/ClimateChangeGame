@@ -1,8 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Linq;
+using System.Xml;
+using System.Xml.Linq;
+using Random=UnityEngine.Random;
 
 public class BoardManager : MonoBehaviour
 {
@@ -21,9 +26,30 @@ public class BoardManager : MonoBehaviour
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI chainText;
 
+    public int moneyVal;
+    public int scienceVal;
+    public int globalCoopVal;
+    public int educationVal;
+    public TextMeshProUGUI moneyText;
+    public TextMeshProUGUI scienceText;
+    public TextMeshProUGUI globalCoopText;
+    public TextMeshProUGUI educationText;
+
+    //Change path name to your ProjDir/Assets/Resources 
+    const string LOCAL_PATH = Serializer.path;
+    //private XDocument doc = XDocument.Load(DATABASE_PATH);
+
+    private int updatedMoneyVal;
+    private int updatedScienceVal;
+    private int updatedGlobalCoopVal;
+    private int updatedEducationVal;
+
     void Start () {
         instance = GetComponent<BoardManager>();     // 7
-
+        moneyVal = 0;
+        scienceVal = 0;
+        globalCoopVal = 0;
+        educationVal = 0;
         totalScore = 0;
         highestChain = 0;
         timeRemaining = 60.0f;
@@ -51,6 +77,19 @@ public class BoardManager : MonoBehaviour
                 timeRemaining = 0; // lock the timer so it doesn't turn negative
                 timerIsRunning = false;
                 IsActive = false;
+
+                moneyText.text = "" + moneyVal + "M";
+                scienceText.text = "" + scienceVal;
+                globalCoopText.text = "" + globalCoopVal;
+                educationText.text = "" + educationVal;
+
+                int[] resourceValues = getResourceValues();
+                updatedMoneyVal = resourceValues[0] + moneyVal;
+                updatedScienceVal = resourceValues[1] + scienceVal;
+                updatedGlobalCoopVal = resourceValues[2] + globalCoopVal;
+                updatedEducationVal = resourceValues[3] + educationVal;
+                
+                Serializer.updateXml(updatedMoneyVal, updatedScienceVal, updatedGlobalCoopVal, updatedEducationVal);
             }
         }
     }
@@ -102,5 +141,39 @@ public class BoardManager : MonoBehaviour
     public Sprite getRandomSprite()
     {
         return characters[Random.Range(0, characters.Count)];
+    }
+
+    //Retrieve resource quantity from xml file
+    private int getResourceValues(string resourceName) {
+        XDocument doc = XDocument.Load(Application.persistentDataPath + LOCAL_PATH);
+        List<XElement> allResources = doc.Root.Descendants().ToList();
+        
+        var result = allResources.Elements("Resource").
+            First(x => x.Element("Name").Value.Equals(resourceName));
+
+        string amountText = result.Element("Amount").Value;
+        int parsedResourceAmount = Int32.Parse(amountText);
+        
+        return parsedResourceAmount;
+    }
+
+    private int[] getResourceValues()
+    {
+        XDocument doc = XDocument.Load(Application.persistentDataPath + LOCAL_PATH);
+        List<XElement> allResources = doc.Root.Descendants().ToList();
+        int[] resourceValues = new int[4];
+        string[] resourceNames = { "Money", "Science", "Global Cooperation", "Education" };
+        for (int i = 0; i < resourceValues.Length; i++)
+        {
+            var result = allResources.Elements("Resource").
+                First(x => x.Element("Name").Value.Equals(resourceNames[i]));
+
+            string amountText = result.Element("Amount").Value;
+            int parsedResourceAmount = Int32.Parse(amountText);
+
+            //print("GET Resource: " + resourceNames[i] + " Amount: " + parsedResourceAmount);
+            resourceValues[i] = parsedResourceAmount;
+        }
+        return resourceValues;
     }
 }

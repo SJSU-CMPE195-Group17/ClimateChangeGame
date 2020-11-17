@@ -29,6 +29,10 @@ public class BoardTile : MonoBehaviour
 
     private bool mouseDown;
 
+    public Transform explosion;
+    public Transform spawnEmitter;
+    private bool emitterStarted = false;
+
     //initialize reference to Puzzle game object, BoardManager script and timeRemaining
     void Start() {
         bm = GameObject.Find("Puzzle");
@@ -49,17 +53,24 @@ public class BoardTile : MonoBehaviour
 
         if (currState == tileState.randomizing)
         {
+            if (randomizingTimer < 1.1 && spawnEmitter && !emitterStarted)
+            {
+                GameObject emitter = ((Transform)Instantiate(spawnEmitter, this.transform.position, this.transform.rotation)).gameObject;
+                Destroy(emitter, 2f);
+                emitterStarted = true;
+            }
             if (randomizingTimer > 0)
             {
                 randomizingTimer -= Time.deltaTime;
             }
             else
             {
-                Debug.Log("Tile Timer finished");
+                //Debug.Log("Tile Timer finished");
                 SetDeselected();
                 randomizingTimer = 0.0f; // lock the timer so it doesn't turn negative
                 currState = tileState.neutral;
                 RandomizeSprite();
+                emitterStarted = false;
             }
         }
 
@@ -99,8 +110,9 @@ public class BoardTile : MonoBehaviour
             currState = tileState.selected;
             render.color = selectedColor;
             numInChain = 1;
-            print("new global tile: " + numInChain);
+            //print("new global tile: " + numInChain);
             globalLastTileSelected = gameObject.GetComponent<BoardTile>();
+            AudioManager.instance.PlayPitch("Select", 1f);
         }
         //chain has begun and render matches
         else if(globalLastTileSelected.render.sprite == render.sprite)
@@ -116,8 +128,9 @@ public class BoardTile : MonoBehaviour
             globalLastTileSelected = gameObject.GetComponent<BoardTile>();
             //set local previous's next to this
             previousSelected.nextSelected = globalLastTileSelected;
+            AudioManager.instance.PlayPitch("Select", 0.8f + 0.2f*numInChain);
 
-            print("new tile to chain: " + numInChain);
+            //print("new tile to chain: " + numInChain);
         }
         //chain has begun but render does not match
         else
@@ -146,7 +159,7 @@ public class BoardTile : MonoBehaviour
             {
                 timerSet = 7.0f / numInChain;
             }
-
+            AudioManager.instance.PlayPitch("Disappear", 0.7f + 0.1f * numInChain);
             RandomizingChainBackwards(globalLastTileSelected, timerSet);
         }
         else
@@ -187,11 +200,16 @@ public class BoardTile : MonoBehaviour
 
     private void SetRandomizing(float time)
     {
-        print("Set rerolling: " + numInChain + " timer:" + time);
+        //print("Set rerolling: " + numInChain + " timer:" + time);
         numInChain = 0;
         currState = tileState.randomizing;
         randomizingTimer = time;
-        render.color = Color.black;
+        render.color = new Color(1f,1f,1f,0f);
+        if (explosion)
+        {
+            GameObject exploder = ((Transform)Instantiate(explosion, this.transform.position, this.transform.rotation)).gameObject;
+            Destroy(exploder, 2.0f);
+        }
     }
 
     private void RandomizingChainBackwards(BoardTile bt, float time)
@@ -207,8 +225,72 @@ public class BoardTile : MonoBehaviour
 
     private void Score(BoardTile bt)
     {
-        print("Score: " + bt.numInChain * 100 + " " + globalLastTileSelected.render.sprite.name);
-        BoardManager.instance.totalScore += bt.numInChain * 100;
+        int scaledScore;
+        if (bt.numInChain < 5)
+        {
+            scaledScore = (bt.numInChain - 3) * 2 + 3;
+        }
+        else if(bt.numInChain < 8)
+        {
+            scaledScore = (bt.numInChain - 3) * 3 + 3;
+        }
+        else
+        {
+            scaledScore = (bt.numInChain - 3) * 4 + 3;
+        }
+
+        //Resource Allocation
+        if(globalLastTileSelected.render.sprite.name == "P_Education")
+        {
+            print("Education " + scaledScore);
+            BoardManager.instance.educationVal += scaledScore;
+        }
+        else if(globalLastTileSelected.render.sprite.name == "P_Coop")
+        {
+            print("Coop " + scaledScore);
+            BoardManager.instance.globalCoopVal += scaledScore;
+        }
+        else if (globalLastTileSelected.render.sprite.name == "P_Money")
+        {
+            print("Money " + scaledScore);
+            BoardManager.instance.moneyVal += scaledScore;
+        }
+        else if (globalLastTileSelected.render.sprite.name == "P_Science")
+        {
+            print("Science " + scaledScore);
+            BoardManager.instance.scienceVal += scaledScore;
+        }
+        else
+        {
+
+            for(int i = 0; i < scaledScore; i++)
+            {
+                int r = Random.Range(0, 4);
+                switch(r)
+                {
+                    case 0:
+                        print("Education 1");
+                        BoardManager.instance.educationVal++;
+                        break;
+                    case 1:
+                        print("Coop 1");
+                        BoardManager.instance.globalCoopVal++;
+                        break;
+                    case 2:
+                        print("Money 1");
+                        BoardManager.instance.moneyVal++;
+                        break;
+                    case 3:
+                        print("Science 1");
+                        BoardManager.instance.scienceVal++;
+                        break;
+
+                }
+            }
+            print("Other" + scaledScore);
+        }
+
+        BoardManager.instance.totalScore += scaledScore * 100;
         if (bt.numInChain > BoardManager.instance.highestChain)
             BoardManager.instance.highestChain = numInChain;
     }
