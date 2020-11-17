@@ -24,7 +24,7 @@ public class multiplechoicequestions: MonoBehaviour
      void Start()
     {
         InitAllAnswers();
-        AddAnswers(0);
+        AddAnswers(0);     
     }
 
     public void GenericQuestionHandler(){
