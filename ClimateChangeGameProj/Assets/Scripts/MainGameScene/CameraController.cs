@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    
     //regions based off of https://upload.wikimedia.org/wikipedia/commons/0/08/United_Nations_geographical_subregions.png
     public const int NORTHERN_AMERICA = 0;
     public const int CENTRAL_AMERICA = 1;
@@ -37,6 +36,18 @@ public class CameraController : MonoBehaviour
     public float dist = 240;
 
     public int rotateDestination;
+    public static CameraController instance;
+
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
 
     private void Start()
     {
