@@ -4319,6 +4319,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1259258908}
+  - component: {fileID: 1259258909}
   m_Layer: 0
   m_Name: MetricsSerializer
   m_TagString: Untagged
@@ -4340,6 +4341,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1259258909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259258907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e5cb6569be48fa42823b9277a31aeda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1268454855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5195,7 +5208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camTarget: {fileID: 1021765506}
-  moveSpeed: 2.2
+  moveSpeed: 1.2
   dist: 240
   rotateDestination: -1
 --- !u!1 &1311849635
@@ -5616,7 +5629,7 @@ MonoBehaviour:
     seaLvlCond: 0
     iceSheetCond: 0
     co2Cond: 0
-    location: 0
+    location: 20
     choices:
     - text: Prepare mass cloud-seeding deployments (-100 Science)
       moneyRequired: 0

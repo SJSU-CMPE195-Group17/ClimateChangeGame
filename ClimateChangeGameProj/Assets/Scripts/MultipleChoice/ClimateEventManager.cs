@@ -30,7 +30,10 @@ public class ClimateEventManager : MonoBehaviour
 
     private void LoadEvent(ClimateEvent ce)
     {
-        MainGameUI.instance.ShowEvent();
+        //delay for x seconds
+        //MainGameUI.hidestuff
+
+        StartCoroutine(MainGameUI.instance.ShowEvent(ce.location));
         currentEvent = ce;
 
         print("Load Event:" + ce.title);
@@ -48,11 +51,12 @@ public class ClimateEventManager : MonoBehaviour
 
     private void AnyEventsTriggered()
     {
-        float glblTemp = MainGameBackend.instance.glblTempVal;
-        float oceanTemp = MainGameBackend.instance.oceanTempVal;
-        float seaLvl = MainGameBackend.instance.seaLvlVal;
-        float iceSheet = MainGameBackend.instance.iceSheetVal;
-        float co2Cond = MainGameBackend.instance.co2Val;
+        float[] metricValues = MainGameBackend.instance.getMetricValues();
+        float glblTemp = metricValues[0];
+        float oceanTemp = metricValues[1];
+        float seaLvl = metricValues[2];
+        float iceSheet = metricValues[3];
+        float co2Cond = metricValues[4];
 
         foreach (ClimateEvent ce in events)
         {
@@ -85,6 +89,7 @@ public class ClimateEventManager : MonoBehaviour
 
     private void resolveOptionSelect(int option)
     {
+        CameraController.instance.rotateDestination = -1;
         int[] resourceValues = MainGameBackend.instance.getResourceValues();
         int updatedMoneyVal = resourceValues[0] - currentEvent.choices[option].moneyRequired;
         int updatedScienceVal = resourceValues[1] - currentEvent.choices[option].scienceRequired;

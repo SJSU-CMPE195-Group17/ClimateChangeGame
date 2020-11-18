@@ -7,7 +7,7 @@ public class ResourceSerializer : MonoBehaviour
 {
     public const string path = "/Resources/Resources.xml";
 
-    void Start()
+    void Awake()
     {
         if (!Directory.Exists(Application.persistentDataPath + "/Resources"))
             Directory.CreateDirectory(Application.persistentDataPath + "/Resources");

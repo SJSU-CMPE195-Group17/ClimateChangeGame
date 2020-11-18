@@ -30,11 +30,17 @@ public class MainGameUI : MonoBehaviour
         }
     }
 
-    public void ShowEvent()
+    public IEnumerator ShowEvent(int location)
     {
         playButton.SetActive(false);
         statsButton.SetActive(false);
         optionsButton.SetActive(false);
+        yield return new WaitForSeconds(0.6f);
+
+        CameraController.instance.rotateDestination = location;
+
+        yield return new WaitForSeconds(2.7f);
+
         bgTint.SetActive(true);
         eventView.SetActive(true);
     }
