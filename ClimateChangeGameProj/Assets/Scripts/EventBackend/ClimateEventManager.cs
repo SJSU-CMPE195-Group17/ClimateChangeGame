@@ -45,6 +45,7 @@ public class ClimateEventManager : MonoBehaviour
         AnyEventsTriggered();
     }
 
+
     private void LoadEvent(int climateEventIndex)
     {
         //delay for x seconds
@@ -53,6 +54,7 @@ public class ClimateEventManager : MonoBehaviour
         ClimateEvent ce = events[climateEventIndex];
         if(ce.location >= 0)
             StartCoroutine(MainGameUI.instance.ShowEvent(ce.location));
+ 
 
         print("Load Event:" + ce.title);
         title.text = ce.title;
