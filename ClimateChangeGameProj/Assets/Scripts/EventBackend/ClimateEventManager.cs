@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
+using UnityEngine.UI;
 
 public class ClimateEventManager : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class ClimateEventManager : MonoBehaviour
 
     public TextMeshProUGUI title;
     public TextMeshProUGUI prompt;
-    public GameObject buttonA, buttonB, buttonC, buttonD;
+    public GameObject[] buttons;
 
     public static int MAX_NUMBER_OF_EVENTS = 25;
     public const string path = "/Resources/EventFlags.xml";
@@ -50,19 +51,43 @@ public class ClimateEventManager : MonoBehaviour
         //MainGameUI.hidestuff
         currentEventIndex = climateEventIndex;
         ClimateEvent ce = events[climateEventIndex];
-        StartCoroutine(MainGameUI.instance.ShowEvent(ce.location));
+        if(ce.location >= 0)
+            StartCoroutine(MainGameUI.instance.ShowEvent(ce.location));
 
         print("Load Event:" + ce.title);
         title.text = ce.title;
         prompt.text = ce.prompt;
+        int[] resourceValues = MainGameBackend.instance.getResourceValues();
+        int moneyVal = resourceValues[0];
+        int scienceVal = resourceValues[1];
+        int globalCoopVal = resourceValues[2];
+        int educationVal = resourceValues[3];
 
-        buttonA.GetComponentInChildren<TextMeshProUGUI>().text = ce.choices[0].text;
-        if (ce.choices.Length > 1)
-            buttonB.GetComponentInChildren<TextMeshProUGUI>().text = ce.choices[1].text;
-        if (ce.choices.Length > 2)
-            buttonC.GetComponentInChildren<TextMeshProUGUI>().text = ce.choices[2].text;
-        if (ce.choices.Length > 3)
-            buttonD.GetComponentInChildren<TextMeshProUGUI>().text = ce.choices[3].text;
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            if(i < ce.choices.Length)
+            {
+                Choice c = ce.choices[i];
+                buttons[i].SetActive(true);
+                buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = ce.choices[i].text;
+                if(c.moneyRequired > moneyVal || c.scienceRequired > scienceVal
+                    || c.globalCoopRequired > globalCoopVal || c.educationRequired > educationVal)
+                {
+                    buttons[i].GetComponent<Button>().interactable = false;
+                }
+                else
+                {
+                    buttons[i].GetComponent<Button>().interactable = true;
+                }
+
+            }
+            //if there is less than i choices, disable the unused buttons
+            else
+            {
+                buttons[i].SetActive(false);
+            }
+        }
+
     }
 
     private void AnyEventsTriggered()

@@ -3351,13 +3351,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Disappear
-    clip: {fileID: 8300000, guid: 130a177e727814a2ea78a886ab72213d, type: 3}
+    clip: {fileID: 8300000, guid: 7bef0064f8567430cac22499c6b93d4f, type: 3}
     volume: 0.4
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Select
-    clip: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+    clip: {fileID: 8300000, guid: a931da70ee74947d5a047de583170ade, type: 3}
     volume: 0.4
     pitch: 1
     loop: 0
