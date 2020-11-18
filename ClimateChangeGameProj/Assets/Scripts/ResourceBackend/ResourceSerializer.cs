@@ -3,12 +3,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-//To reset values, uncomment initializeXml method
-public class Serializer : MonoBehaviour
+public class ResourceSerializer : MonoBehaviour
 {
-    //Change path name to your ProjDir/Assets/Resources
     public const string path = "/Resources/Resources.xml";
-
 
     void Start()
     {
@@ -86,12 +83,5 @@ public class Serializer : MonoBehaviour
         if (!File.Exists(Application.persistentDataPath + path))
             Debug.LogWarning("File " + Application.persistentDataPath + path + " not found");
         XmlOperation.Serialize(resourcesContainer, Application.persistentDataPath + path);
-    }
-
-    void loadXml() {
-        // ResourcesContainer readResources = XmlOperation.Deserialize(path);
-        // foreach(Resource resource in readResources.resourcesContainers) {
-        //     Debug.Log(resource.totalAmount);
-        // }
     }
 }

@@ -12,8 +12,41 @@ public class MainGameUI : MonoBehaviour
     public Toggle statsToggle;
     public GameObject statsView;
     public GameObject playButton;
-    public GameObject testButton;
     public GameObject bgTint;
+    public GameObject eventView;
+    public GameObject statsButton;
+    public GameObject optionsButton;
+
+    public static MainGameUI instance;
+
+    public void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
+    public void ShowEvent()
+    {
+        playButton.SetActive(false);
+        statsButton.SetActive(false);
+        optionsButton.SetActive(false);
+        bgTint.SetActive(true);
+        eventView.SetActive(true);
+    }
+
+    public void EventEnded()
+    {
+        playButton.SetActive(true);
+        statsButton.SetActive(true);
+        optionsButton.SetActive(true);
+        bgTint.SetActive(false);
+        eventView.SetActive(false);
+    }
 
     public void SaveAndQuit()
     {
@@ -31,14 +64,12 @@ public class MainGameUI : MonoBehaviour
         {
             statsView.SetActive(true);
             playButton.SetActive(false);
-            testButton.SetActive(false);
             bgTint.SetActive(true);
         }
         else
         {
             statsView.SetActive(false);
             playButton.SetActive(true);
-            testButton.SetActive(true);
             bgTint.SetActive(false);
         }
     }

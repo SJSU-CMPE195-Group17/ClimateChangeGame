@@ -36,7 +36,7 @@ public class BoardManager : MonoBehaviour
     public TextMeshProUGUI educationText;
 
     //Change path name to your ProjDir/Assets/Resources 
-    const string LOCAL_PATH = Serializer.path;
+    const string RESOURCE_PATH = ResourceSerializer.path;
     //private XDocument doc = XDocument.Load(DATABASE_PATH);
 
     private int updatedMoneyVal;
@@ -89,7 +89,7 @@ public class BoardManager : MonoBehaviour
                 updatedGlobalCoopVal = resourceValues[2] + globalCoopVal;
                 updatedEducationVal = resourceValues[3] + educationVal;
                 
-                Serializer.updateXml(updatedMoneyVal, updatedScienceVal, updatedGlobalCoopVal, updatedEducationVal);
+                ResourceSerializer.updateXml(updatedMoneyVal, updatedScienceVal, updatedGlobalCoopVal, updatedEducationVal);
             }
         }
     }
@@ -145,7 +145,7 @@ public class BoardManager : MonoBehaviour
 
     //Retrieve resource quantity from xml file
     private int getResourceValues(string resourceName) {
-        XDocument doc = XDocument.Load(Application.persistentDataPath + LOCAL_PATH);
+        XDocument doc = XDocument.Load(Application.persistentDataPath + RESOURCE_PATH);
         List<XElement> allResources = doc.Root.Descendants().ToList();
         
         var result = allResources.Elements("Resource").
@@ -159,7 +159,7 @@ public class BoardManager : MonoBehaviour
 
     private int[] getResourceValues()
     {
-        XDocument doc = XDocument.Load(Application.persistentDataPath + LOCAL_PATH);
+        XDocument doc = XDocument.Load(Application.persistentDataPath + RESOURCE_PATH);
         List<XElement> allResources = doc.Root.Descendants().ToList();
         int[] resourceValues = new int[4];
         string[] resourceNames = { "Money", "Science", "Global Cooperation", "Education" };

@@ -10,7 +10,8 @@ using UnityEngine.UI;
 
 public class MainGameBackend : MonoBehaviour
 {
-    const string LOCAL_PATH = Serializer.path;
+    const string RESOURCE_PATH = ResourceSerializer.path;
+    const string METRIC_PATH = ClimateMetricSerializer.path;
     //private XDocument doc = XDocument.Load(DATABASE_PATH);
 
     public TextMeshProUGUI dateText;
@@ -38,11 +39,11 @@ public class MainGameBackend : MonoBehaviour
     private int currYear = 2020;
     private int currSeason = 0;
 
-    private float glblTempVal = 1.78f; //in deg F
-    private float oceanTempVal = 1.25f;//in deg F
-    private float seaLvlVal = 94f;     //in mm
-    private float iceSheetVal = 7200f; //in Gt
-    private float co2Val = 1050f;       //in ppm
+    public float glblTempVal = 1.78f; //in deg F
+    public float oceanTempVal = 1.25f;//in deg F
+    public float seaLvlVal = 94f;     //in mm
+    public float iceSheetVal = 7200f; //in Gt
+    public float co2Val = 1050f;       //in ppm
 
     //estimate maxes for game over, we need to do research on what metrics would be catastrophic
     private const float GLOBAL_TEMP_MAX = 10.68f;   
@@ -56,7 +57,19 @@ public class MainGameBackend : MonoBehaviour
 
     public GameObject mymultiplechoicequestions;
 
-    // Start is called before the first frame update
+    public static MainGameBackend instance;
+
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
     void Start()
     {
         updateGui();
@@ -72,10 +85,17 @@ public class MainGameBackend : MonoBehaviour
         if (Input.GetKeyDown("f1"))
         {
             setResourceValues(40, 40, 40, 40);
+            setMetricValues(1.78f, 1.25f, 94f, 7200f, 1050f);
         }
         if (Input.GetKeyDown("f2"))
         {
             setResourceValues(161, 125, 87, 108);
+            setMetricValues(8.1f, 6.2f, 405.6f, 30238.8f, 3552.3f);
+        }
+        if (Input.GetKeyDown("space"))
+        {
+            print("PROGRESS");
+            progressTime();
         }
     }
 
@@ -87,6 +107,13 @@ public class MainGameBackend : MonoBehaviour
         scienceVal = resourceValues[1];//getResourceValues("Science");
         globalCoopVal = resourceValues[2];//getResourceValues("Global Cooperation");
         educationVal = resourceValues[3];//getResourceValues("Education");
+
+        float[] metricValues = getMetricValues();
+        glblTempVal = metricValues[0];
+        oceanTempVal = metricValues[1];
+        seaLvlVal = metricValues[2];
+        iceSheetVal = metricValues[3];
+        co2Val = metricValues[4];
 
         //update text values
         moneyText.text = "" + moneyVal + "M";
@@ -126,6 +153,11 @@ public class MainGameBackend : MonoBehaviour
         updateGui();
     }
 
+    public void play()
+    {
+        progressSeasons(13);
+    }
+
     //numOfSeasons = number of seasons to increase by
     private void progressSeasons(int numOfSeasons)
     {
@@ -137,28 +169,27 @@ public class MainGameBackend : MonoBehaviour
 
         //climate change metrics here will change based off of climate change sim
         //in this extremely simple sim, it just increases by arbitrary values
-        glblTempVal += 0.356f * numOfSeasons;
-        oceanTempVal += 0.25f * numOfSeasons;
-        seaLvlVal += 18.8f * numOfSeasons;
-        iceSheetVal += 1440f * numOfSeasons;
-        co2Val += 210f * numOfSeasons;
+        float[] metricValues = getMetricValues();
+        glblTempVal = metricValues[0];
+        oceanTempVal = metricValues[1];
+        seaLvlVal = metricValues[2];
+        iceSheetVal = metricValues[3];
+        co2Val = metricValues[4];
+
+        glblTempVal += 0.01f * numOfSeasons; //0.356f
+        oceanTempVal += 0.01f * numOfSeasons; //0.25f
+        seaLvlVal += 0.8f * numOfSeasons; // 18.8f
+        iceSheetVal += 37f * numOfSeasons; //1440f
+        co2Val += 1.75f * numOfSeasons; // 210f
+
+        setMetricValues(glblTempVal, oceanTempVal, seaLvlVal, iceSheetVal, co2Val);
 
         //increase season and year by appropriate amount
         if (currSeason + numOfSeasons > 3)
         {
-            currYear += 15;
+            currYear += 1;
         }
         currSeason = (currSeason + numOfSeasons) % 4;
-    
-        if (glblTempVal > 2 && glblTempVal < 3.57)
-        {
-            mymultiplechoicequestions.SetActive(true);
-        }
-        if (glblTempVal > 4 && glblTempVal < 5.35)
-        {
-            mymultiplechoicequestions.SetActive(true);
-            mymultiplechoicequestions.GetComponent<multiplechoicequestions>().AddAnswers(4);
-        }
     }
 
     public void changeResourcesAndStatistics(int myMoneyVal, int myScienceVal, int myGlobalCoopVal, int myEducationVal)
@@ -172,8 +203,8 @@ public class MainGameBackend : MonoBehaviour
     }
 
     //Retrieve resource quantity from xml file
-    private int getResourceValues(string resourceName) {
-        XDocument doc = XDocument.Load(Application.persistentDataPath + LOCAL_PATH);
+    public int getResourceValues(string resourceName) {
+        XDocument doc = XDocument.Load(Application.persistentDataPath + RESOURCE_PATH);
         
         //XDocument doc = Resources.Load<XDocument>("Resources.xml");
         List <XElement> allResources = doc.Root.Descendants().ToList();
@@ -188,10 +219,9 @@ public class MainGameBackend : MonoBehaviour
         return parsedResourceAmount;
     }
 
-    private int[] getResourceValues()
+    public int[] getResourceValues()
     {
-
-        XDocument doc = XDocument.Load(Application.persistentDataPath + LOCAL_PATH);
+        XDocument doc = XDocument.Load(Application.persistentDataPath + RESOURCE_PATH);
         List<XElement> allResources = doc.Root.Descendants().ToList();
         int[] resourceValues = new int[4];
         string[] resourceNames = { "Money", "Science", "Global Cooperation", "Education" };
@@ -209,10 +239,38 @@ public class MainGameBackend : MonoBehaviour
         return resourceValues;
     }
 
-    private void setResourceValues(int updatedMoneyVal, int updatedScienceVal, int updatedGlobalCoopVal, int updatedEducationVal)
+    public void setResourceValues(int updatedMoneyVal, int updatedScienceVal, int updatedGlobalCoopVal, int updatedEducationVal)
     {
         print("Set Resources to: " + updatedMoneyVal + " " + updatedScienceVal + " " + updatedGlobalCoopVal + " " + updatedEducationVal);
-        Serializer.updateXml(updatedMoneyVal, updatedScienceVal, updatedGlobalCoopVal, updatedEducationVal);
+        ResourceSerializer.updateXml(updatedMoneyVal, updatedScienceVal, updatedGlobalCoopVal, updatedEducationVal);
+        updateGui();
+    }
+
+    public float[] getMetricValues()
+    {
+        XDocument doc = XDocument.Load(Application.persistentDataPath + METRIC_PATH);
+        List<XElement> allMetrics = doc.Root.Descendants().ToList();
+        float[] metricValues = new float[5];
+        string[] metricNames = { "GlobalTemp", "OceanTemp", "SeaLevel", "IceSheets", "Co2" };
+        
+        for (int i = 0; i < metricValues.Length; i++)
+        {
+            var result = allMetrics.Elements("ClimateMetric").
+                First(x => x.Element("Name").Value.Equals(metricNames[i]));
+            string valueText = result.Element("Value").Value;
+            float parsedMetricAmount = float.Parse(valueText);
+
+            //print("GET Metric: " + metricNames[i] + " Amount: " + parsedMetricAmount);
+            metricValues[i] = parsedMetricAmount;
+        }
+        return metricValues;
+    }
+
+
+    public void setMetricValues(float updatedGlblTempVal, float updatedOceanTempVal, float updatedSeaLvlVal, float updatedIceSheetVal, float updatedCo2Val)
+    {
+        print("Set Metrics to: " + updatedGlblTempVal + " " + updatedOceanTempVal + " " + updatedSeaLvlVal + " " + updatedIceSheetVal + " " + updatedCo2Val);
+        ClimateMetricSerializer.updateXml(updatedGlblTempVal, updatedOceanTempVal, updatedSeaLvlVal, updatedIceSheetVal, updatedCo2Val);
         updateGui();
     }
 }
