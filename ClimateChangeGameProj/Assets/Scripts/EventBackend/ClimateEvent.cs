@@ -7,6 +7,7 @@ public class ClimateEvent
 {
     public string title;
     public string prompt;
+    public string isPositiveEvent;
 
     public float glblTempCond; //in deg F
     public float oceanTempCond;//in deg F

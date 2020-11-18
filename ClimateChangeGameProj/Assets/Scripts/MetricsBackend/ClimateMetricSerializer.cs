@@ -145,10 +145,6 @@ public class ClimateMetricSerializer : MonoBehaviour
             value = date
         });
 
-        /*
-        File is saved as Resources.xml under Assets/Resources directory in project
-        Initialization of XML file
-        */
         if (!File.Exists(Application.persistentDataPath + path))
             Debug.LogWarning("File " + Application.persistentDataPath + path + " not found");
         XmlOperation.Serialize(climateMetricContainer, Application.persistentDataPath + path);

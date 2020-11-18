@@ -84,13 +84,13 @@ public class MainGameBackend : MonoBehaviour
 
     private void Update()
     {
-
         if (Input.GetKeyDown("f1"))
         {
             setResourceValues(40, 40, 40, 40);
             setMetricValues(GLOBAL_TEMP_BASE, OCEAN_TEMP_BASE, SEA_LEVEL_BASE, ICE_SHEET_BASE, CO2_BASE, 
                 GLOBAL_TEMP_DELTA_BASE, OCEAN_TEMP_DELTA_BASE, SEA_LEVEL_DELTA_BASE, ICE_SHEET_DELTA_BASE, CO2_DELTA_BASE, 
                 START_YEAR, START_SEASON);
+            ClimateEventManager.instance.resetXML();
         }
         if (Input.GetKeyDown("f2"))
         {

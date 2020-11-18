@@ -1748,11 +1748,6 @@ MonoBehaviour:
   seaLvlSlider: {fileID: 361495834}
   iceSheetSlider: {fileID: 392735178}
   co2Slider: {fileID: 1545258533}
-  glblTempVal: 1.78
-  oceanTempVal: 1.25
-  seaLvlVal: 94
-  iceSheetVal: 7200
-  co2Val: 1050
   MinBarColor: {r: 0.79375803, g: 1, b: 0, a: 1}
   MaxBarColor: {r: 1, g: 0, b: 0, a: 1}
   mymultiplechoicequestions: {fileID: 0}
@@ -5624,7 +5619,8 @@ MonoBehaviour:
   - title: Droughts In Australia
     prompt: Models predict a catastrophic 4-8 year drought in Austraila. What is
       your response?
-    glblTempCond: 0
+    isPositiveEvent: false
+    glblTempCond: 1.88
     oceanTempCond: 0
     seaLvlCond: 0
     iceSheetCond: 0
@@ -5636,22 +5632,62 @@ MonoBehaviour:
       scienceRequired: 100
       globalCoopRequired: 0
       educationRequired: 0
+      globalTempDelta: -0.1
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: -0.002
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
     - text: Begin a region-wide stockpile and hope for the best (-$100M)
       moneyRequired: 100
       scienceRequired: 0
       globalCoopRequired: 0
       educationRequired: 0
+      globalTempDelta: -0.05
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: 0
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
     - text: Create international network of supplies to support Austrailia (-200
         Global Cooperation)
       moneyRequired: 0
       scienceRequired: 0
       globalCoopRequired: 200
       educationRequired: 0
+      globalTempDelta: -0.08
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: -0.002
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
     - text: Hope the models are wrong
       moneyRequired: 0
       scienceRequired: 0
       globalCoopRequired: 0
       educationRequired: 0
+      globalTempDelta: 0.1
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: 0.01
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
   title: {fileID: 1311849637}
   prompt: {fileID: 253400643}
   buttonA: {fileID: 9424605}
