@@ -24,6 +24,13 @@ public class ClimateEventManager : MonoBehaviour
 
     void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
         if (!Directory.Exists(Application.persistentDataPath + "/Resources"))
             Directory.CreateDirectory(Application.persistentDataPath + "/Resources");
         if (!File.Exists(Application.persistentDataPath + path))
@@ -34,14 +41,6 @@ public class ClimateEventManager : MonoBehaviour
     void Start()
     {
         print("Event Manager Start");
-        if (instance == null)
-            instance = this;
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         AnyEventsTriggered();
     }
 
@@ -184,7 +183,7 @@ public class ClimateEventManager : MonoBehaviour
         MainGameUI.instance.EventEnded();
     }
 
-    private void initializeXml()
+    public void initializeXml()
     {
         EventFlagContainer eventFlagContainer = new EventFlagContainer();
         for(int i = 0; i < MAX_NUMBER_OF_EVENTS; i++)

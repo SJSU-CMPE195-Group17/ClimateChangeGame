@@ -5,17 +5,25 @@ using System.Xml.Serialization;
 
 public class ClimateMetricSerializer : MonoBehaviour
 {
+    public static ClimateMetricSerializer instance;
     public const string path = "/Resources/ClimateMetrics.xml";
     // Start is called before the first frame update
     void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
         if (!Directory.Exists(Application.persistentDataPath + "/Resources"))
             Directory.CreateDirectory(Application.persistentDataPath + "/Resources");
         if (!File.Exists(Application.persistentDataPath + path))
             initializeXml();
     }
 
-    void initializeXml()
+    public void initializeXml()
     {
         ClimateMetricContainer climateMetricContainer = new ClimateMetricContainer();
         climateMetricContainer.ClimateMetricContainers.Add(new ClimateMetric
