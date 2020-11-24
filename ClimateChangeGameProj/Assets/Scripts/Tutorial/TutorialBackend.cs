@@ -111,21 +111,29 @@ public class TutorialBackend : MonoBehaviour
             case 1:
                 statsButton.SetActive(true);
                 tutorialTitle.text = "Statistics and Objectives";
-                tutorialText.text = "NEXT NEXT TEXT";
+                tutorialText.text = "You can view the current state of the climate with the Statistics button on the top right. If the measured conditions get beyond " +
+                    "the thresholds indicated, we can expect to see apocalyptic consequences around the world, so do your best to keep these conditions low. If you " +
+                    "manage to keep these metrics below the designated thresholds until 2100, we can expect to keep the Earth habitable for future centuries.";
                 break;
             case 2:
                 bottomResources.SetActive(true);
                 tutorialTitle.text = "Resource Spending";
-                tutorialText.text = "NEXT TEXT";
+                tutorialText.text = "On the bottom of the screen, you can see the four resources needed to combat climate change: capital, research, " +
+                    "global cooperation, and education. Throughout this game, events caused by climate change will occur. You will be presented with several measures " +
+                    "you can take as the head of the IPCC. Each measure will require one of these resources.";
                 break;
             case 3:
                 playButton.SetActive(true);
                 tutorialTitle.text = "Resource Earning";
-                tutorialText.text = "NEXT NEXT NEXT TEXT";
+                tutorialText.text = "You can collect resources by pressing the play button on the bottom right. You will be presented with a puzzle board where you can " +
+                    "match icons to collect resources. Note that you will get more resources by creating longer chains of matches! You will have a limited amount of time " +
+                    "to collect these resources, so be quick.";
                 break;
             case 4:
                 tutorialTitle.text = "Good Luck";
-                tutorialText.text = "NEXT NEXT NEXT NEXT TEXT";
+                tutorialText.text = "Do your best to collect enough resources throughout the puzzle games so you can successfully mitigate the impact of climate change! Note " +
+                    "that all events that can occur are grounded in reality. It's likely that you'll see some of these events during your lifetime. Visit ndrc.org, sierraclub.org, " +
+                    "or ipcc.ch to find out what you can do to help protect our planet.";
                 break;
             case 5:
                 StartCoroutine(nextScene());
