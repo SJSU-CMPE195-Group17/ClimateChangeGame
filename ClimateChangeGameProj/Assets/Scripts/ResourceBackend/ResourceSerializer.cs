@@ -5,17 +5,25 @@ using System.Xml.Serialization;
 
 public class ResourceSerializer : MonoBehaviour
 {
+    public static ResourceSerializer instance;
     public const string path = "/Resources/Resources.xml";
 
     void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
         if (!Directory.Exists(Application.persistentDataPath + "/Resources"))
             Directory.CreateDirectory(Application.persistentDataPath + "/Resources");
         if (!File.Exists(Application.persistentDataPath + path))
             initializeXml();
     }
 
-    void initializeXml() {
+    public void initializeXml() {
         ResourcesContainer resourcesContainer = new ResourcesContainer();
         resourcesContainer.resourcesContainers.Add(new Resource
         {

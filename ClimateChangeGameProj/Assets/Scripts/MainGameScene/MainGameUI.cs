@@ -29,16 +29,24 @@ public class MainGameUI : MonoBehaviour
             return;
         }
     }
+    public IEnumerator PlayEventSound()
+    {
+        AudioManager.instance.Play("EventSound");
+        yield return new WaitForSeconds(0.4f);
+        AudioManager.instance.Play("EventSound");
+        yield return new WaitForSeconds(0.4f);
+        AudioManager.instance.Play("EventSound");
+    }
 
     public IEnumerator ShowEvent(int location)
     {
         playButton.SetActive(false);
         statsButton.SetActive(false);
         optionsButton.SetActive(false);
-        yield return new WaitForSeconds(0.6f);
-
+        yield return new WaitForSeconds(0.3f);
+        StartCoroutine(PlayEventSound());
+        yield return new WaitForSeconds(0.3f);
         CameraController.instance.rotateDestination = location;
-
         yield return new WaitForSeconds(2.7f);
 
         bgTint.SetActive(true);

@@ -7,8 +7,9 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class MainGameBackend : MonoBehaviour
+public class TutorialBackend : MonoBehaviour
 {
     const string RESOURCE_PATH = ResourceSerializer.path;
     const string METRIC_PATH = ClimateMetricSerializer.path;
@@ -30,6 +31,16 @@ public class MainGameBackend : MonoBehaviour
     public Slider seaLvlSlider;
     public Slider iceSheetSlider;
     public Slider co2Slider;
+
+    private int tutorialState;
+    public TextMeshProUGUI tutorialTitle;
+    public TextMeshProUGUI tutorialText;
+    public GameObject dateView;
+    public GameObject statsButton;
+    public GameObject optionsButton;
+    public GameObject bottomResources;
+    public GameObject playButton;
+    public GameObject loading;
 
     private static string[] seasons = { "Spring", "Summer", "Fall", "Winter" };
 
@@ -57,9 +68,7 @@ public class MainGameBackend : MonoBehaviour
     public Color MinBarColor = Color.yellow;
     public Color MaxBarColor = Color.red;
 
-    public GameObject mymultiplechoicequestions;
-
-    public static MainGameBackend instance;
+    public static TutorialBackend instance;
 
     void Awake()
     {
@@ -70,35 +79,73 @@ public class MainGameBackend : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-    }
 
+    }
+    // Start is called before the first frame update
     void Start()
     {
-        updateGui();
-        //mymultiplechoicequestions.GetComponent<multiplechoicequestions>().AddQuestions("a text", "b text", "c text", "d text");
+        TutorialEventManager.instance.initializeXml();
+        ClimateMetricSerializer.instance.initializeXml();
+        ResourceSerializer.instance.initializeXml();
+
+        tutorialState = 0;
+        dateView.SetActive(true);
+        tutorialTitle.text = "Climate Change Concerns on the Rise";
+        tutorialText.text = "Scientists around the world have published concerning studies on the path of climate change. Despite rising concerns in the 2010's, " +
+            "little has been done to mitigate climate change. Now, with increased worries about our future, the United Nations has appointed you as the new head " +
+            "of the Intergovernmental Panel on Climate Change (IPCC). It will be up to you to guide the world through the dangers of climate change.";
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
-        if (Input.GetKeyDown("f1"))
+        updateGui();
+    }
+
+    public void progressTutorial()
+    {
+        tutorialState++;
+
+        switch (tutorialState)
         {
-            setResourceValues(40, 40, 40, 40);
-            setMetricValues(GLOBAL_TEMP_BASE, OCEAN_TEMP_BASE, SEA_LEVEL_BASE, ICE_SHEET_BASE, CO2_BASE, 
-                GLOBAL_TEMP_DELTA_BASE, OCEAN_TEMP_DELTA_BASE, SEA_LEVEL_DELTA_BASE, ICE_SHEET_DELTA_BASE, CO2_DELTA_BASE, 
-                START_YEAR, START_SEASON);
-            ClimateEventManager.instance.resetXML();
+            case 1:
+                statsButton.SetActive(true);
+                tutorialTitle.text = "Statistics and Objectives";
+                tutorialText.text = "You can view the current state of the climate with the Statistics button on the top right. If the measured conditions get beyond " +
+                    "the thresholds indicated, we can expect to see apocalyptic consequences around the world, so do your best to keep these conditions low. If you " +
+                    "manage to keep these metrics below the designated thresholds until 2100, we can expect to keep the Earth habitable for future centuries.";
+                break;
+            case 2:
+                bottomResources.SetActive(true);
+                tutorialTitle.text = "Resource Spending";
+                tutorialText.text = "On the bottom of the screen, you can see the four resources needed to combat climate change: capital, research, " +
+                    "global cooperation, and education. Throughout this game, events caused by climate change will occur. You will be presented with several measures " +
+                    "you can take as the head of the IPCC. Each measure will require one of these resources.";
+                break;
+            case 3:
+                playButton.SetActive(true);
+                tutorialTitle.text = "Resource Earning";
+                tutorialText.text = "You can collect resources by pressing the play button on the bottom right. You will be presented with a puzzle board where you can " +
+                    "match icons to collect resources. Note that you will get more resources by creating longer chains of matches! You will have a limited amount of time " +
+                    "to collect these resources, so be quick.";
+                break;
+            case 4:
+                tutorialTitle.text = "Good Luck";
+                tutorialText.text = "Do your best to collect enough resources throughout the puzzle games so you can successfully mitigate the impact of climate change! Note " +
+                    "that all events that can occur are grounded in reality. It's likely that you'll see some of these events during your lifetime. Visit ndrc.org, sierraclub.org, " +
+                    "or ipcc.ch to find out what you can do to help protect our planet.";
+                break;
+            case 5:
+                StartCoroutine(nextScene());
+                break;
         }
-        if (Input.GetKeyDown("f2"))
-        {
-            setResourceValues(161, 125, 87, 108);
-            setMetricValues(8.1f, 6.2f, 405.6f, 30238.8f, 3552.3f, 
-                0.03f, 0.03f, 2f, 60f, 6f, 2084, 3);
-        }
-        if (Input.GetKeyDown("space"))
-        {
-            print("PROGRESS");
-            progressTime();
-        }
+    }
+
+    private IEnumerator nextScene()
+    {
+        loading.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(1); //index of MainGame
     }
 
     private void updateGui()
@@ -147,70 +194,17 @@ public class MainGameBackend : MonoBehaviour
         iceSheetSlider.value = iceSheetVal / ICE_SHEET_MAX;
         iceSheetSlider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.Lerp(MinBarColor, MaxBarColor, iceSheetSlider.value);
 
-        co2Slider.value = (co2Val-300f) / CO2_MAX;
+        co2Slider.value = (co2Val - 300f) / CO2_MAX;
         co2Slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.Lerp(MinBarColor, MaxBarColor, co2Slider.value);
     }
 
-    //called for debugging
-    public void progressTime()
+    public int getResourceValues(string resourceName)
     {
-        progressSeasons(13);
-        updateGui();
-    }
-
-    //called when play button is pressed
-    public void play()
-    {
-        progressSeasons(13);
-    }
-
-    //numOfSeasons = number of seasons to increase by
-    private void progressSeasons(int numOfSeasons)
-    {
-
-        //climate change metrics here will change based off of climate change sim
-        //in this extremely simple sim, it just increases by arbitrary values
-        float[] metricValues = getMetricValues();
-        float glblTempVal = metricValues[0];
-        float oceanTempVal = metricValues[1];
-        float seaLvlVal = metricValues[2];
-        float iceSheetVal = metricValues[3];
-        float co2Val = metricValues[4];
-
-        float glblTempDelta = metricValues[5];
-        float oceanTempDelta = metricValues[6];
-        float seaLvlDelta = metricValues[7];
-        float iceSheetDelta = metricValues[8];
-        float co2Delta = metricValues[9];
-        float date = metricValues[10];
-        int currYear = (int)date;
-        int currSeason = (int)((date - currYear) * 4);
-
-        glblTempVal += glblTempDelta * numOfSeasons;
-        oceanTempVal += oceanTempDelta * numOfSeasons;
-        seaLvlVal += seaLvlDelta * numOfSeasons;
-        iceSheetVal += iceSheetDelta * numOfSeasons;
-        co2Val += co2Delta * numOfSeasons;
-
-        //increase season and year by appropriate amount
-        if (currSeason + numOfSeasons > 3)
-        {
-            currYear += numOfSeasons / 4;
-        }
-        currSeason = (currSeason + numOfSeasons) % 4;
-
-        setMetricValues(glblTempVal, oceanTempVal, seaLvlVal, iceSheetVal, co2Val,
-        glblTempDelta, oceanTempDelta, seaLvlDelta, iceSheetDelta, co2Delta,
-        currYear, currSeason);
-    }
-
-    //Retrieve resource quantity from xml file
-    public int getResourceValues(string resourceName) {
         XDocument doc = XDocument.Load(Application.persistentDataPath + RESOURCE_PATH);
-        
+
         //XDocument doc = Resources.Load<XDocument>("Resources.xml");
-        List <XElement> allResources = doc.Root.Descendants().ToList();
-        
+        List<XElement> allResources = doc.Root.Descendants().ToList();
+
         var result = allResources.Elements("Resource").
             First(x => x.Element("Name").Value.Equals(resourceName));
 
@@ -227,7 +221,7 @@ public class MainGameBackend : MonoBehaviour
         List<XElement> allResources = doc.Root.Descendants().ToList();
         int[] resourceValues = new int[4];
         string[] resourceNames = { "Money", "Science", "Global Cooperation", "Education" };
-        for(int i = 0; i < resourceValues.Length; i++)
+        for (int i = 0; i < resourceValues.Length; i++)
         {
             var result = allResources.Elements("Resource").
                 First(x => x.Element("Name").Value.Equals(resourceNames[i]));
@@ -255,7 +249,7 @@ public class MainGameBackend : MonoBehaviour
         float[] metricValues = new float[11];
         string[] metricNames = { "GlobalTemp", "OceanTemp", "SeaLevel", "IceSheets", "Co2",
         "GlobalTempDelta", "OceanTempDelta", "SeaLevelDelta", "IceSheetsDelta", "Co2Delta", "Date"};
-        
+
         for (int i = 0; i < metricValues.Length; i++)
         {
             var result = allMetrics.Elements("ClimateMetric").
