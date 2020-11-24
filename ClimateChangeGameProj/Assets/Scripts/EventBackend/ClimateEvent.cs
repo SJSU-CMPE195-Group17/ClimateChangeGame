@@ -17,4 +17,5 @@ public class ClimateEvent
 
     public int location;
     public Choice[] choices;
+    public string articleLink;
 }

@@ -1291,7 +1291,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Title Here
+  m_text: Climate Crisis
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 36e4a988b64f546c1a3de936a4cacfb7, type: 2}
   m_sharedMaterial: {fileID: 8052828725523940146, guid: 36e4a988b64f546c1a3de936a4cacfb7, type: 2}

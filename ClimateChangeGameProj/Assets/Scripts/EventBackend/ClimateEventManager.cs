@@ -183,6 +183,12 @@ public class ClimateEventManager : MonoBehaviour
         MainGameUI.instance.EventEnded();
     }
 
+    public void LinkButtonPress()
+    {
+        print("opening link: " + events[currentEventIndex].articleLink);
+        Application.OpenURL(events[currentEventIndex].articleLink);
+    }
+
     public void initializeXml()
     {
         EventFlagContainer eventFlagContainer = new EventFlagContainer();
