@@ -16,6 +16,11 @@ public class MainGameUI : MonoBehaviour
     public GameObject eventView;
     public GameObject statsButton;
     public GameObject optionsButton;
+    public GameObject gameLossView;
+
+    public GameObject mgb;
+    private MainGameBackend mgbScript;
+    bool gameLost;
 
     public static MainGameUI instance;
 
@@ -28,7 +33,10 @@ public class MainGameUI : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        mgbScript = mgb.GetComponent<MainGameBackend>();
+        gameLost = mgbScript.gameLost;
     }
+
     public IEnumerator PlayEventSound()
     {
         AudioManager.instance.Play("EventSound");
@@ -86,6 +94,14 @@ public class MainGameUI : MonoBehaviour
             playButton.SetActive(true);
             bgTint.SetActive(false);
         }
+    }
+
+    public void TriggerGameLoss() {
+        gameLossView.SetActive(true);
+    }
+
+    public void ReturnToMenu() {
+        SceneManager.LoadScene(STARTUP_SCREEN);
     }
 
 }
