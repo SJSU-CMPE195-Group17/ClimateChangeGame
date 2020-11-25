@@ -3593,6 +3593,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Avg. Ocean Temperature Increase
       objectReference: {fileID: 0}
+    - target: {fileID: 1759555120117887332, guid: bb02b40d70fe8234c9de919ddaa3c9b3, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b355c824c9e334fd3be395b374eb468b, type: 2}
+    - target: {fileID: 1759555120117887332, guid: bb02b40d70fe8234c9de919ddaa3c9b3, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1759555120117887333, guid: bb02b40d70fe8234c9de919ddaa3c9b3, type: 3}
       propertyPath: m_AnchorMin.y
       value: 1
@@ -4776,6 +4784,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Ice Sheet Loss
       objectReference: {fileID: 0}
+    - target: {fileID: 1759555120117887332, guid: bb02b40d70fe8234c9de919ddaa3c9b3, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b355c824c9e334fd3be395b374eb468b, type: 2}
+    - target: {fileID: 1759555120117887332, guid: bb02b40d70fe8234c9de919ddaa3c9b3, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1759555120117887333, guid: bb02b40d70fe8234c9de919ddaa3c9b3, type: 3}
       propertyPath: m_AnchorMin.y
       value: 1
@@ -4988,6 +5004,14 @@ PrefabInstance:
     - target: {fileID: 1759555120117887332, guid: bb02b40d70fe8234c9de919ddaa3c9b3, type: 3}
       propertyPath: m_text
       value: Avg. Global Temperature Increase
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759555120117887332, guid: bb02b40d70fe8234c9de919ddaa3c9b3, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b355c824c9e334fd3be395b374eb468b, type: 2}
+    - target: {fileID: 1759555120117887332, guid: bb02b40d70fe8234c9de919ddaa3c9b3, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1759555120117887333, guid: bb02b40d70fe8234c9de919ddaa3c9b3, type: 3}
       propertyPath: m_AnchorMin.y
@@ -7169,6 +7193,14 @@ PrefabInstance:
     - target: {fileID: 1759555120117887332, guid: bb02b40d70fe8234c9de919ddaa3c9b3, type: 3}
       propertyPath: m_text
       value: CO2 Concentration
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759555120117887332, guid: bb02b40d70fe8234c9de919ddaa3c9b3, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b355c824c9e334fd3be395b374eb468b, type: 2}
+    - target: {fileID: 1759555120117887332, guid: bb02b40d70fe8234c9de919ddaa3c9b3, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1759555120117887333, guid: bb02b40d70fe8234c9de919ddaa3c9b3, type: 3}
       propertyPath: m_AnchorMin.y
