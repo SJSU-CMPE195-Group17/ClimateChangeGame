@@ -14,11 +14,14 @@ public class MainGameBackend : MonoBehaviour
     const string METRIC_PATH = ClimateMetricSerializer.path;
     //private XDocument doc = XDocument.Load(DATABASE_PATH);
 
+    public bool gameLost = false;
+
     public TextMeshProUGUI dateText;
     public TextMeshProUGUI moneyText;
     public TextMeshProUGUI scienceText;
     public TextMeshProUGUI globalCoopText;
     public TextMeshProUGUI educationText;
+    public TextMeshProUGUI gameLossText;
 
     public TextMeshProUGUI glblTempText;
     public TextMeshProUGUI oceanTempText;
@@ -149,6 +152,36 @@ public class MainGameBackend : MonoBehaviour
 
         co2Slider.value = (co2Val-300f) / CO2_MAX;
         co2Slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = Color.Lerp(MinBarColor, MaxBarColor, co2Slider.value);
+
+        if (glblTempVal > GLOBAL_TEMP_MAX) {
+            gameLossText.text = "Oh no! The current global temperature has exceeded its maximum limit and sea levels have risen drastically, displacing" +
+            "certain countries' populations and destroying the ecosystem. \n\nAs several years pass, 50% of all lifeforms are becoming extinct.";
+            MainGameUI.instance.TriggerGameLoss();
+        }
+
+        if (oceanTempVal > OCEAN_TEMP_MAX) {
+            gameLossText.text = "Uh oh! The ocean temperature has exceeded its maximum limit, causing coral bleaching and destroying breeding grounds for marine fishes" +
+             "and mammals. \n\nThe ecosystem is also facing detrimental effects, indirectly causing the extinction of certain species.";
+            MainGameUI.instance.TriggerGameLoss();
+        }
+
+        if (seaLvlVal > SEA_LEVEL_MAX) {
+            gameLossText.text = "Oops! The sea level has exceeded its maximum limit, bringing devastating effects on coastal habitats farther inland," + 
+            "destructive erosion, wetland flooding, aquifer and agricultural soil contamination with salt. \n\nMost animals have also lost their habitats.";
+            MainGameUI.instance.TriggerGameLoss();
+        }
+
+        if (iceSheetVal > ICE_SHEET_MAX) {
+            gameLossText.text = "Yikes! The ice sheets have been melting, which adds to rising sea levels. The occurrence of coastal erosion and natural disasters" +
+            "such as hurricanes and typhoons is getting increasingly frequent. \n\nThe temperature is warmer, rendering the Earth uninhabitable.";
+            MainGameUI.instance.TriggerGameLoss();
+        }
+
+        if (co2Val > CO2_MAX) {
+            gameLossText.text = "Uh oh! The current carbon dioxide level has exceeded its maximum limit, strengthening the greenhouse effects." +
+            "Additional heat is now trapped and the Earth's average temperature is constantly rising, rendering it uninhabitable after 50 years.";
+            MainGameUI.instance.TriggerGameLoss();
+        }
     }
 
     //called for debugging
