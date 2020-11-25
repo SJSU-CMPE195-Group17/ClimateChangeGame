@@ -1226,14 +1226,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b355c824c9e334fd3be395b374eb468b, type: 2}
+  m_sharedMaterial: {fileID: -9140118196098962516, guid: b355c824c9e334fd3be395b374eb468b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4292730333
+    rgba: 4293848814
   m_fontColor: {r: 0.9339623, g: 0.9339623, b: 0.9339623, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1612,8 +1612,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b355c824c9e334fd3be395b374eb468b, type: 2}
+  m_sharedMaterial: {fileID: -9140118196098962516, guid: b355c824c9e334fd3be395b374eb468b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1757,8 +1757,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b355c824c9e334fd3be395b374eb468b, type: 2}
+  m_sharedMaterial: {fileID: -9140118196098962516, guid: b355c824c9e334fd3be395b374eb468b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1963,8 +1963,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b355c824c9e334fd3be395b374eb468b, type: 2}
+  m_sharedMaterial: {fileID: -9140118196098962516, guid: b355c824c9e334fd3be395b374eb468b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2880,8 +2880,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b355c824c9e334fd3be395b374eb468b, type: 2}
+  m_sharedMaterial: {fileID: -9140118196098962516, guid: b355c824c9e334fd3be395b374eb468b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5558,8 +5558,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b355c824c9e334fd3be395b374eb468b, type: 2}
+  m_sharedMaterial: {fileID: -9140118196098962516, guid: b355c824c9e334fd3be395b374eb468b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5940,9 +5940,9 @@ MonoBehaviour:
     co2Cond: 0
     location: 20
     choices:
-    - text: Prepare mass cloud-seeding deployments (-100 Science)
+    - text: Prepare mass cloud-seeding deployments (-90 Science)
       moneyRequired: 0
-      scienceRequired: 100
+      scienceRequired: 90
       globalCoopRequired: 0
       educationRequired: 0
       globalTempDelta: -0.1
@@ -5955,8 +5955,8 @@ MonoBehaviour:
       seaLevelDeltaDelta: 0
       iceSheetDeltaDelta: 0
       co2DeltaDelta: 0
-    - text: Begin a region-wide stockpile and hope for the best (-$100M)
-      moneyRequired: 100
+    - text: Begin a region-wide stockpile and hope for the best (-$60M)
+      moneyRequired: 60
       scienceRequired: 0
       globalCoopRequired: 0
       educationRequired: 0
@@ -5970,11 +5970,11 @@ MonoBehaviour:
       seaLevelDeltaDelta: 0
       iceSheetDeltaDelta: 0
       co2DeltaDelta: 0
-    - text: Create international network of supplies to support Austrailia (-200
-        Global Cooperation)
+    - text: Create international network of supplies to support Austrailia (-65 Global
+        Cooperation)
       moneyRequired: 0
       scienceRequired: 0
-      globalCoopRequired: 200
+      globalCoopRequired: 65
       educationRequired: 0
       globalTempDelta: -0.08
       oceanTempDelta: 0
