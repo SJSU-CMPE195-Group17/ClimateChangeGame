@@ -1236,7 +1236,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4292730333
+    rgba: 4293848814
   m_fontColor: {r: 0.9339623, g: 0.9339623, b: 0.9339623, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1640,8 +1640,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1919,8 +1919,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2127,8 +2127,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3178,8 +3178,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6359,8 +6359,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   events:
   - title: Droughts In Australia
-    prompt: Models predict a catastrophic 4-8 year drought in Austraila. What is
-      your response?
+    prompt: 'Since 1900, average annual precipitation over the U.S. has increased
+      by roughly 5%, northern UniModels predict a catastrophic 4-8 year drought '
     isPositiveEvent: false
     glblTempCond: 1.88
     oceanTempCond: 0
@@ -6369,9 +6369,9 @@ MonoBehaviour:
     co2Cond: 0
     location: 20
     choices:
-    - text: Prepare mass cloud-seeding deployments (-100 Science)
+    - text: Prepare mass cloud-seeding deployments (-50 Science)
       moneyRequired: 0
-      scienceRequired: 100
+      scienceRequired: 50
       globalCoopRequired: 0
       educationRequired: 0
       globalTempDelta: -0.1
@@ -6384,8 +6384,8 @@ MonoBehaviour:
       seaLevelDeltaDelta: 0
       iceSheetDeltaDelta: 0
       co2DeltaDelta: 0
-    - text: Begin a region-wide stockpile and hope for the best (-$100M)
-      moneyRequired: 100
+    - text: Begin a region-wide stockpile and hope for the best (-$40M)
+      moneyRequired: 40
       scienceRequired: 0
       globalCoopRequired: 0
       educationRequired: 0
@@ -6399,11 +6399,11 @@ MonoBehaviour:
       seaLevelDeltaDelta: 0
       iceSheetDeltaDelta: 0
       co2DeltaDelta: 0
-    - text: Create international network of supplies to support Austrailia (-200
-        Global Cooperation)
+    - text: Create international network of supplies to support Austrailia (-30 Global
+        Cooperation)
       moneyRequired: 0
       scienceRequired: 0
-      globalCoopRequired: 200
+      globalCoopRequired: 30
       educationRequired: 0
       globalTempDelta: -0.08
       oceanTempDelta: 0
@@ -6431,6 +6431,303 @@ MonoBehaviour:
       iceSheetDeltaDelta: 0
       co2DeltaDelta: 0
     articleLink: https://www.climatecollege.unimelb.edu.au/recent-australian-droughts-may-be-worst-800-years
+  - title: Change in precipitation pattern
+    prompt: Since 1900, average annual precipitation over the U.S. has increased
+      by roughly 5%, northern United States will become wetter while South will become
+      drier.
+    isPositiveEvent: false
+    glblTempCond: 2.15
+    oceanTempCond: 0
+    seaLvlCond: 0
+    iceSheetCond: 0
+    co2Cond: 0
+    location: 0
+    choices:
+    - text: Set CO2 emission goals for each state (- 150 cooperation)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 150
+      educationRequired: 0
+      globalTempDelta: -0.1
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: -0.002
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: A molecule of methane warms the planet roughly 30 times more than CO2,
+        Let people know about it  (-120 education)
+      moneyRequired: 120
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: -0.05
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: 0
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: 'Invest for distibuting solar pannels and wind turbines nationwide(-100money) '
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 100
+      educationRequired: 0
+      globalTempDelta: -0.08
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: -0.002
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: Use as an opportinity to show public how climate change affect the weather
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: 0.1
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: 0.01
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    articleLink: https://science2017.globalchange.gov/chapter/7/#:~:text=1%20Mean%20Changes,over%20the%201901%E2%80%932012%20period.
+  - title: Glacier melts in India
+    prompt: Glaciers in the Garhwal Himalaya in India are retreating so fast that 
+      researchers believe that most central and eastern Himalayan glaciers  could
+      virtually disappear by 2035
+    isPositiveEvent: false
+    glblTempCond: 2.32
+    oceanTempCond: 0
+    seaLvlCond: 0
+    iceSheetCond: 0
+    co2Cond: 0
+    location: 17
+    choices:
+    - text: Start a campainexert to exert pressure for change on the businesses that
+        are the main agents of deforestation (-200 education)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 200
+      globalTempDelta: -0.1
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: -0.002
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: Introduce policies to keep fisheries production within sustainable limits
+        to reduce ocean warming (-170 cooperation)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 170
+      educationRequired: 0
+      globalTempDelta: -0.05
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: 0
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: Invest money to make an advertisement to raise awareness to the public
+        about it (-$100M)
+      moneyRequired: 100
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: -0.08
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: -0.002
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: Continue normal operations
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: 0.1
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: 0.01
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    articleLink: https://www.nationalgeographic.com/environment/global-warming/big-thaw/#:~:text=Glaciers%20in%20the%20Garhwal%20Himalaya,in%20the%20past%2030%20years.
+  - title: Wildfires in California
+    prompt: 'Due to the climate change, California became more dry. More than two
+      million acres have burned across California '
+    isPositiveEvent: false
+    glblTempCond: 2.45
+    oceanTempCond: 0
+    seaLvlCond: 0
+    iceSheetCond: 0
+    co2Cond: 0
+    location: 0
+    choices:
+    - text: Invest to make a better fire alert system for big mountains (-350 science)
+      moneyRequired: 0
+      scienceRequired: 350
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: -0.1
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: -0.002
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: Suggest governors to introduce policies to keep fisheries production
+        within sustainable limits to reduce ocean warming (-250 cooperation)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 250
+      educationRequired: 0
+      globalTempDelta: -0.05
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: 0
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: Invest to make robots that can monitor over mountains in the sky (-$240M)
+      moneyRequired: 240
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: -0.08
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: -0.002
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: Continue normal operations
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: 0.1
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: 0.01
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    articleLink: https://www.scientificamerican.com/article/climate-change-is-central-to-californias-wildfires/#:~:text=More%20than%20half%20of%20the,than%20doubled%20since%20the%201980s.&text=For%20wildfires%2C%20fuel%20treatments%20like,have%20become%20a%20salient%20example.
+  - title: Great Barrier Reef Imminent Death
+    prompt: High ocean temperatures have bleached the majority of coral in the Great
+      Barrier Reef, resulting in a largescale ecosystem collapse.
+    isPositiveEvent: false
+    glblTempCond: 2.55
+    oceanTempCond: 0
+    seaLvlCond: 0
+    iceSheetCond: 0
+    co2Cond: 0
+    location: 20
+    choices:
+    - text: Restrict fertilizer use in AU and NZ (-350 cooperation)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 350
+      educationRequired: 0
+      globalTempDelta: -0.1
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: -0.002
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: Begin program to transplant hardy, lab-raised coral larvae into the reef
+        (- 240 science)
+      moneyRequired: 0
+      scienceRequired: 160
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: -0.05
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: 0
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: Use as an opportunity to show public the catastrophic nature of climate
+        change (+50 education)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: 0.1
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: -0.002
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: Use as an opportunity to obtain more funding (+ $30M)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: 0.12
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: 0.01
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    articleLink: https://edition.cnn.com/travel/article/great-barrier-reef-coral-loss-intl-scli-climate-scn/index.html
   title: {fileID: 1311849637}
   prompt: {fileID: 253400643}
   buttons:
@@ -6905,7 +7202,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 047a608fc4af0b040a25e3581a17834f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9ecbd61c25ce67a489324cd173effca0, type: 2}
+      objectReference: {fileID: 2100000, guid: 1c45f6b236eb448b584ffc8d7b5ded39, type: 2}
     - target: {fileID: 919132149155446097, guid: 047a608fc4af0b040a25e3581a17834f, type: 3}
       propertyPath: m_Name
       value: Sphere128
