@@ -6436,7 +6436,7 @@ MonoBehaviour:
       by roughly 5%, northern United States will become wetter while South will become
       drier.
     isPositiveEvent: false
-    glblTempCond: 2.15
+    glblTempCond: 2.1
     oceanTempCond: 0
     seaLvlCond: 0
     iceSheetCond: 0
@@ -6510,15 +6510,15 @@ MonoBehaviour:
       researchers believe that most central and eastern Himalayan glaciers  could
       virtually disappear by 2035
     isPositiveEvent: false
-    glblTempCond: 2.32
+    glblTempCond: 2.3
     oceanTempCond: 0
     seaLvlCond: 0
     iceSheetCond: 0
     co2Cond: 0
     location: 17
     choices:
-    - text: Start a campainexert to exert pressure for change on the businesses that
-        are the main agents of deforestation (-200 education)
+    - text: Start a campain to exert pressure on the businesses that cause deforestation
+        (-200 education)
       moneyRequired: 0
       scienceRequired: 0
       globalCoopRequired: 0
@@ -6585,7 +6585,7 @@ MonoBehaviour:
     prompt: 'Due to the climate change, California became more dry. More than two
       million acres have burned across California '
     isPositiveEvent: false
-    glblTempCond: 2.45
+    glblTempCond: 2.5
     oceanTempCond: 0
     seaLvlCond: 0
     iceSheetCond: 0
@@ -6658,7 +6658,7 @@ MonoBehaviour:
     prompt: High ocean temperatures have bleached the majority of coral in the Great
       Barrier Reef, resulting in a largescale ecosystem collapse.
     isPositiveEvent: false
-    glblTempCond: 2.55
+    glblTempCond: 2.7
     oceanTempCond: 0
     seaLvlCond: 0
     iceSheetCond: 0
@@ -7202,7 +7202,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 047a608fc4af0b040a25e3581a17834f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1c45f6b236eb448b584ffc8d7b5ded39, type: 2}
+      objectReference: {fileID: 2100000, guid: ff39bfc085be23c43a97c08052d8604e, type: 2}
     - target: {fileID: 919132149155446097, guid: 047a608fc4af0b040a25e3581a17834f, type: 3}
       propertyPath: m_Name
       value: Sphere128
