@@ -360,7 +360,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
+  m_fontSize: 20
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2282,7 +2282,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
+  m_fontSize: 20
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4453,7 +4453,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
+  m_fontSize: 20
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4940,7 +4940,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
+  m_fontSize: 20
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6431,7 +6431,7 @@ MonoBehaviour:
       iceSheetDeltaDelta: 0
       co2DeltaDelta: 0
     articleLink: https://www.climatecollege.unimelb.edu.au/recent-australian-droughts-may-be-worst-800-years
-  - title: Change in precipitation pattern
+  - title: Change in Precipitation Pattern
     prompt: Since 1900, average annual precipitation over the U.S. has increased
       by roughly 5%, northern United States will become wetter while South will become
       drier.
@@ -6505,7 +6505,7 @@ MonoBehaviour:
       iceSheetDeltaDelta: 0
       co2DeltaDelta: 0
     articleLink: https://science2017.globalchange.gov/chapter/7/#:~:text=1%20Mean%20Changes,over%20the%201901%E2%80%932012%20period.
-  - title: Glacier melts in India
+  - title: Glacier Melts in India
     prompt: Glaciers in the Garhwal Himalaya in India are retreating so fast that 
       researchers believe that most central and eastern Himalayan glaciers  could
       virtually disappear by 2035
@@ -6728,6 +6728,383 @@ MonoBehaviour:
       iceSheetDeltaDelta: 0
       co2DeltaDelta: 0
     articleLink: https://edition.cnn.com/travel/article/great-barrier-reef-coral-loss-intl-scli-climate-scn/index.html
+  - title: Average Global Temperature Rise
+    prompt: Uncharacteristically high taverage temperature especially in the Asian
+      continent
+    isPositiveEvent: false
+    glblTempCond: 2.9
+    oceanTempCond: 0
+    seaLvlCond: 0
+    iceSheetCond: 0
+    co2Cond: 0
+    location: 14
+    choices:
+    - text: Invest in energy efficient appliances / vehicles (-$300M)
+      moneyRequired: 300
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: -0.2
+      oceanTempDelta: -0.2
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: -0.02
+      oceanTempDeltaDelta: -0.002
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: Set a world-wide aggreement to reduce co2 emisstion (-250 Cooperation)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 250
+      educationRequired: 0
+      globalTempDelta: -0.15
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: -0.1
+      globalTempDeltaDelta: -0.01
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: -0.01
+    - text: Generate greater awareness of the harmful effects of greenhouse gas emissions
+        through increased advertising and promotion (-$100M)
+      moneyRequired: 100
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: -0.1
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: -0.1
+      globalTempDeltaDelta: -0.002
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: -0.002
+    - text: Continue normal operations (take no action)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: 0.1
+      oceanTempDelta: 0.1
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: 0.01
+      oceanTempDeltaDelta: 0.1
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    articleLink: https://scied.ucar.edu/learning-zone/impacts-climate-change/predictions-future-global-climate
+  - title: Stronger / More intense hurricanes expected in North American regions
+    prompt: Due to climate change, highly destructive hurricanes are putting a growing
+      number of people and structures at risk. In the near future, these hurricanes
+      are predicted to carry significantly higher wind speeds due to suitable environmental
+      conditions resulting from rising sea level and temperature.
+    isPositiveEvent: false
+    glblTempCond: 3
+    oceanTempCond: 0
+    seaLvlCond: 0
+    iceSheetCond: 0
+    co2Cond: 0
+    location: 0
+    choices:
+    - text: Reduce the emission of harmful greenhouse gases in order to curtail absorption
+        of heat from large water bodies (-300 Science)
+      moneyRequired: 0
+      scienceRequired: 300
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: -0.2
+      oceanTempDelta: -0.2
+      seaLevelDelta: -0.1
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: -0.02
+      oceanTempDeltaDelta: -0.02
+      seaLevelDeltaDelta: -0.01
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: Create a better weather detective system which will enable satellites
+        to predict the occurrence of hurricanes earlier than ever before. (-$200M)
+      moneyRequired: 0
+      scienceRequired: 200
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: -0.1
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: -0.01
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: Curb the rapid growth of population in coastal areas and quickly strive
+        for urbanization of the inlands in order to reduce the destructive potential
+        of hurricanes. (-200 Cooperation)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 200
+      educationRequired: 0
+      globalTempDelta: -0.1
+      oceanTempDelta: -0.1
+      seaLevelDelta: -0.1
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: -0.01
+      oceanTempDeltaDelta: -0.01
+      seaLevelDeltaDelta: -0.01
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: Continue normal operations (take no action)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: 0.15
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: 0.015
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    articleLink: https://www.ucsusa.org/resources/hurricanes-and-climate-change
+  - title: Global Concern on Climate Change rises
+    prompt: Due to disturbing reports that describe earth as "uninhabitable" should
+      the current trend of climate change continue, global governments have increased
+      funding for your program.
+    isPositiveEvent: false
+    glblTempCond: 3
+    oceanTempCond: 0
+    seaLvlCond: 0
+    iceSheetCond: 0
+    co2Cond: 0
+    location: 0
+    choices:
+    - text: Due to the recent reports and concern demonstrated by the government,
+        the general population begins to gain more awareness surrounding global warming
+        (+200 education)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: -0.1
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: -0.01
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: Since the global governments have increased funding for your program,
+        your budget has now grown (+$150M)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: 0
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: 0
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: Use this as an incentive for added emphasis on the research on climate
+        change solutions. (+150 science)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: 0
+      oceanTempDelta: -0.1
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: -0.1
+      globalTempDeltaDelta: 0
+      oceanTempDeltaDelta: -0.01
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: -0.01
+    - text: Continue normal operations (take no action)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: 0.1
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: 0.01
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    articleLink: https://www.cnn.com/2020/10/13/world/un-natural-disasters-climate-intl-hnk/index.html
+  - title: CO2 Levels Lead to Decreased Cognitive Function
+    prompt: Increased levels of CO2 have lead to decreased levels of cognitive function
+      around the world.
+    isPositiveEvent: false
+    glblTempCond: 3.5
+    oceanTempCond: 0
+    seaLvlCond: 0
+    iceSheetCond: 0
+    co2Cond: 0
+    location: 0
+    choices:
+    - text: Due to the recent reports and concern demonstrated by the government,
+        the general population begins to gain more awareness surrounding global warming
+        (+200 education)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: -0.1
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: -0.01
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: Since the global governments have increased funding for your program,
+        your budget has now grown (+$150M)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: 0
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: 0
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    - text: Use this as an incentive for added emphasis on the research on climate
+        change solutions. (+150 science)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: 0
+      oceanTempDelta: -0.1
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: -0.1
+      globalTempDeltaDelta: 0
+      oceanTempDeltaDelta: -0.01
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: -0.01
+    - text: Continue normal operations (take no action)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: 0.1
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 0
+      globalTempDeltaDelta: 0.01
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0
+    articleLink: https://www.ucsusa.org/resources/hurricanes-and-climate-change
+  - title: United States places a future ban on non-hybrid or non-electric vehicles
+    prompt: Due to high education levels, a bill has been placed to ban the sale
+      of all non-hybrid or non-electric vehicles within the next decade
+    isPositiveEvent: true
+    glblTempCond: 0
+    oceanTempCond: 0
+    seaLvlCond: 0
+    iceSheetCond: 0
+    co2Cond: 0
+    location: 0
+    choices:
+    - text: Encourage change by funding new charging stations and solar power plants
+        (-$250M)
+      moneyRequired: 250
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: -0.2
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: -4
+      globalTempDeltaDelta: -0.02
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: -0.5
+    - text: Encourage change by funding new charging stations (-$150M)
+      moneyRequired: 150
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: -0.1
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: -2
+      globalTempDeltaDelta: -0.01
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: -0.3
+    - text: Encourage other countries to follow suit (-150 Cooperation)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 150
+      educationRequired: 0
+      globalTempDelta: -0.3
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: -1
+      globalTempDeltaDelta: 0.03
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: -0.3
+    - text: Continue normal operations (take no action)
+      moneyRequired: 0
+      scienceRequired: 0
+      globalCoopRequired: 0
+      educationRequired: 0
+      globalTempDelta: 0.1
+      oceanTempDelta: 0
+      seaLevelDelta: 0
+      iceSheetDelta: 0
+      co2Delta: 2
+      globalTempDeltaDelta: 0.01
+      oceanTempDeltaDelta: 0
+      seaLevelDeltaDelta: 0
+      iceSheetDeltaDelta: 0
+      co2DeltaDelta: 0.4
+    articleLink: https://www.nytimes.com/2020/09/23/climate/california-ban-gas-cars.html
   title: {fileID: 1311849637}
   prompt: {fileID: 253400643}
   buttons:
