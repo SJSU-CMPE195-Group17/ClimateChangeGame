@@ -17,6 +17,7 @@ public class MainGameUI : MonoBehaviour
     public GameObject statsButton;
     public GameObject optionsButton;
     public GameObject gameLossView;
+    public GameObject blackBg;
 
     public GameObject mgb;
     private MainGameBackend mgbScript;
@@ -97,6 +98,7 @@ public class MainGameUI : MonoBehaviour
     }
 
     public void TriggerGameLoss() {
+        blackBg.SetActive(true);
         gameLossView.SetActive(true);
     }
 
