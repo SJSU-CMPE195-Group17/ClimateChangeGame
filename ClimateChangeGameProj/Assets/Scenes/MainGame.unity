@@ -159,8 +159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.12033, y: -231.46298}
-  m_SizeDelta: {x: 858.24066, y: 69.76387}
+  m_AnchoredPosition: {x: 479.12033, y: -248.96298}
+  m_SizeDelta: {x: 858.24066, y: 64.76387}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9424607
 MonoBehaviour:
@@ -738,8 +738,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.12033, y: -476.75455}
-  m_SizeDelta: {x: 858.24066, y: 69.76387}
+  m_AnchoredPosition: {x: 479.12033, y: -479.25455}
+  m_SizeDelta: {x: 858.24066, y: 64.76387}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &154246511
 MonoBehaviour:
@@ -1078,7 +1078,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.12033, y: -133.29053}
+  m_AnchoredPosition: {x: 479.12033, y: -153.29053}
   m_SizeDelta: {x: 858.24066, y: 102.581055}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &189842856
@@ -3000,8 +3000,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.12033, y: -394.9907}
-  m_SizeDelta: {x: 858.24066, y: 69.76387}
+  m_AnchoredPosition: {x: 479.12033, y: -402.4907}
+  m_SizeDelta: {x: 858.24066, y: 64.76387}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &617006538
 MonoBehaviour:
@@ -5964,7 +5964,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.12033, y: -45}
+  m_AnchoredPosition: {x: 479.12033, y: -65}
   m_SizeDelta: {x: 858.24066, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1311849637
@@ -6364,7 +6364,7 @@ MonoBehaviour:
     prompt: 'Since 1900, average annual precipitation over the U.S. has increased
       by roughly 5%, northern UniModels predict a catastrophic 4-8 year drought '
     isPositiveEvent: false
-    glblTempCond: 1.88
+    glblTempCond: 2
     oceanTempCond: 0
     seaLvlCond: 0
     iceSheetCond: 0
@@ -6543,27 +6543,26 @@ MonoBehaviour:
       globalCoopRequired: 170
       educationRequired: 0
       globalTempDelta: -0.05
-      oceanTempDelta: 0
+      oceanTempDelta: -0.8
       seaLevelDelta: 0
       iceSheetDelta: 0
       co2Delta: 0
       globalTempDeltaDelta: 0
-      oceanTempDeltaDelta: 0
+      oceanTempDeltaDelta: -0.05
       seaLevelDeltaDelta: 0
       iceSheetDeltaDelta: 0
       co2DeltaDelta: 0
-    - text: Invest money to make an advertisement to raise awareness to the public
-        about it (-$100M)
+    - text: Invest in an advertisement campaign to raise awareness  (-$100M)
       moneyRequired: 100
       scienceRequired: 0
       globalCoopRequired: 0
       educationRequired: 0
       globalTempDelta: -0.08
-      oceanTempDelta: 0
+      oceanTempDelta: -0.1
       seaLevelDelta: 0
       iceSheetDelta: 0
       co2Delta: 0
-      globalTempDeltaDelta: -0.002
+      globalTempDeltaDelta: -0.001
       oceanTempDeltaDelta: 0
       seaLevelDeltaDelta: 0
       iceSheetDeltaDelta: 0
@@ -6588,15 +6587,15 @@ MonoBehaviour:
     prompt: Due to a lack of rain, California forests have become warm and dry. Enormous
       wildfires have spread throughout the state
     isPositiveEvent: false
-    glblTempCond: 2.8
+    glblTempCond: 3.4
     oceanTempCond: 0
     seaLvlCond: 0
     iceSheetCond: 0
     co2Cond: 0
     location: 0
     choices:
-    - text: Invest in making better fire alert systems for large forests (-120 money)
-      moneyRequired: 120
+    - text: Invest in making better fire alert systems for large forests (-160 money)
+      moneyRequired: 160
       scienceRequired: 0
       globalCoopRequired: 0
       educationRequired: 0
@@ -6610,10 +6609,10 @@ MonoBehaviour:
       seaLevelDeltaDelta: 0
       iceSheetDeltaDelta: 0
       co2DeltaDelta: 0
-    - text: Suggest rerouting electricity lines around fire prone areas (-100 cooperation)
+    - text: Suggest rerouting electricity lines around fire prone areas (-160 cooperation)
       moneyRequired: 0
       scienceRequired: 0
-      globalCoopRequired: 100
+      globalCoopRequired: 160
       educationRequired: 0
       globalTempDelta: -0.05
       oceanTempDelta: 0
@@ -6625,9 +6624,9 @@ MonoBehaviour:
       seaLevelDeltaDelta: 0
       iceSheetDeltaDelta: 0
       co2DeltaDelta: 0
-    - text: Invest to drones that can monitor over fire prone areas (-100 Science)
+    - text: Invest to drones that can monitor over fire prone areas (-200 Science)
       moneyRequired: 0
-      scienceRequired: 100
+      scienceRequired: 200
       globalCoopRequired: 0
       educationRequired: 0
       globalTempDelta: -0.08
@@ -6668,10 +6667,10 @@ MonoBehaviour:
     location: 20
     choices:
     - text: Restrict fertilizer use in AU and NZ, since fertilizer runoff contributes
-        to the problem (-140 cooperation)
+        to the problem (-160 cooperation)
       moneyRequired: 0
       scienceRequired: 0
-      globalCoopRequired: 140
+      globalCoopRequired: 160
       educationRequired: 0
       globalTempDelta: 0
       oceanTempDelta: -0.1
@@ -6684,7 +6683,7 @@ MonoBehaviour:
       iceSheetDeltaDelta: 0
       co2DeltaDelta: 0
     - text: Begin program to transplant hardy, lab-raised coral larvae into the reef
-        (- 200 education)
+        (-200 education)
       moneyRequired: 0
       scienceRequired: 0
       globalCoopRequired: 0
@@ -6735,15 +6734,15 @@ MonoBehaviour:
     prompt: Uncharacteristically high temperatures are impacting Asia especially,
       resulting in deadly heat waves
     isPositiveEvent: false
-    glblTempCond: 5.5
+    glblTempCond: 5.6
     oceanTempCond: 0
     seaLvlCond: 0
     iceSheetCond: 0
     co2Cond: 0
     location: 14
     choices:
-    - text: Invest in energy efficient appliances / vehicles (-$300M)
-      moneyRequired: 300
+    - text: Invest in energy efficient appliances / vehicles (-$220M)
+      moneyRequired: 220
       scienceRequired: 0
       globalCoopRequired: 0
       educationRequired: 0
@@ -6752,7 +6751,7 @@ MonoBehaviour:
       seaLevelDelta: 0
       iceSheetDelta: 0
       co2Delta: 0
-      globalTempDeltaDelta: -0.02
+      globalTempDeltaDelta: -0.002
       oceanTempDeltaDelta: -0.002
       seaLevelDeltaDelta: 0
       iceSheetDeltaDelta: 0
@@ -6767,12 +6766,12 @@ MonoBehaviour:
       seaLevelDelta: 0
       iceSheetDelta: 0
       co2Delta: -0.1
-      globalTempDeltaDelta: -0.01
+      globalTempDeltaDelta: -0.003
       oceanTempDeltaDelta: 0
       seaLevelDeltaDelta: 0
       iceSheetDeltaDelta: 0
       co2DeltaDelta: -0.01
-    - text: Generate greater awareness of the harmful effects of greenhouse gas emissions
+    - text: Increase awareness of the harmful effects of greenhouse gas emissions
         through increased advertising and promotion (-$100M)
       moneyRequired: 100
       scienceRequired: 0
@@ -6818,9 +6817,9 @@ MonoBehaviour:
     location: 0
     choices:
     - text: Reduce the emission of harmful greenhouse gases in order to curtail absorption
-        of heat from large water bodies (-300 Science)
+        of heat from large water bodies (-220 Science)
       moneyRequired: 0
-      scienceRequired: 300
+      scienceRequired: 220
       globalCoopRequired: 0
       educationRequired: 0
       globalTempDelta: -0.2
@@ -6834,7 +6833,7 @@ MonoBehaviour:
       iceSheetDeltaDelta: 0
       co2DeltaDelta: 0
     - text: Create a better weather detective system which will enable satellites
-        to predict the occurrence of hurricanes earlier than ever before. (-$200M)
+        to predict the occurrence of hurricanes earlier than before. (-$200M)
       moneyRequired: 0
       scienceRequired: 200
       globalCoopRequired: 0
@@ -6887,7 +6886,7 @@ MonoBehaviour:
       the current trend of climate change continue, global governments have increased
       funding for your program.
     isPositiveEvent: false
-    glblTempCond: 7
+    glblTempCond: 7.2
     oceanTempCond: 0
     seaLvlCond: 0
     iceSheetCond: 0
@@ -6900,7 +6899,7 @@ MonoBehaviour:
       moneyRequired: 0
       scienceRequired: 0
       globalCoopRequired: 0
-      educationRequired: 0
+      educationRequired: -200
       globalTempDelta: -0.1
       oceanTempDelta: 0
       seaLevelDelta: 0
@@ -6913,7 +6912,7 @@ MonoBehaviour:
       co2DeltaDelta: 0
     - text: Since the global governments have increased funding for your program,
         your budget has now grown (+$150M)
-      moneyRequired: 0
+      moneyRequired: -150
       scienceRequired: 0
       globalCoopRequired: 0
       educationRequired: 0
@@ -6930,7 +6929,7 @@ MonoBehaviour:
     - text: Use this as an incentive for added emphasis on the research on climate
         change solutions. (+150 science)
       moneyRequired: 0
-      scienceRequired: 0
+      scienceRequired: -150
       globalCoopRequired: 0
       educationRequired: 0
       globalTempDelta: 0
@@ -6939,10 +6938,10 @@ MonoBehaviour:
       iceSheetDelta: 0
       co2Delta: -0.1
       globalTempDeltaDelta: 0
-      oceanTempDeltaDelta: -0.01
+      oceanTempDeltaDelta: -1
       seaLevelDeltaDelta: 0
       iceSheetDeltaDelta: 0
-      co2DeltaDelta: -0.01
+      co2DeltaDelta: -0.001
     - text: Continue normal operations (take no action)
       moneyRequired: 0
       scienceRequired: 0
@@ -6967,7 +6966,7 @@ MonoBehaviour:
     oceanTempCond: 0
     seaLvlCond: 0
     iceSheetCond: 0
-    co2Cond: 900
+    co2Cond: 600
     location: 0
     choices:
     - text: Due to the recent reports and concern demonstrated by the government,
@@ -6976,7 +6975,7 @@ MonoBehaviour:
       moneyRequired: 0
       scienceRequired: 0
       globalCoopRequired: 0
-      educationRequired: 0
+      educationRequired: -200
       globalTempDelta: -0.1
       oceanTempDelta: 0
       seaLevelDelta: 0
@@ -6989,7 +6988,7 @@ MonoBehaviour:
       co2DeltaDelta: 0
     - text: Since the global governments have increased funding for your program,
         your budget has now grown (+$150M)
-      moneyRequired: 0
+      moneyRequired: -150
       scienceRequired: 0
       globalCoopRequired: 0
       educationRequired: 0
@@ -7006,7 +7005,7 @@ MonoBehaviour:
     - text: Use this as an incentive for added emphasis on the research on climate
         change solutions. (+150 science)
       moneyRequired: 0
-      scienceRequired: 0
+      scienceRequired: -150
       globalCoopRequired: 0
       educationRequired: 0
       globalTempDelta: 0
@@ -7057,11 +7056,11 @@ MonoBehaviour:
       seaLevelDelta: 0
       iceSheetDelta: 0
       co2Delta: -4
-      globalTempDeltaDelta: -0.02
+      globalTempDeltaDelta: -0.002
       oceanTempDeltaDelta: 0
       seaLevelDeltaDelta: 0
       iceSheetDeltaDelta: 0
-      co2DeltaDelta: -0.5
+      co2DeltaDelta: -0.05
     - text: Encourage change by funding new charging stations (-$80M)
       moneyRequired: 8
       scienceRequired: 0
@@ -7072,11 +7071,11 @@ MonoBehaviour:
       seaLevelDelta: 0
       iceSheetDelta: 0
       co2Delta: -2
-      globalTempDeltaDelta: -0.01
+      globalTempDeltaDelta: -0.001
       oceanTempDeltaDelta: 0
       seaLevelDeltaDelta: 0
       iceSheetDeltaDelta: 0
-      co2DeltaDelta: -0.3
+      co2DeltaDelta: -0.03
     - text: Encourage other countries to follow suit (-120 Cooperation)
       moneyRequired: 0
       scienceRequired: 0
@@ -7087,11 +7086,11 @@ MonoBehaviour:
       seaLevelDelta: 0
       iceSheetDelta: 0
       co2Delta: -1
-      globalTempDeltaDelta: 0.03
+      globalTempDeltaDelta: 0.003
       oceanTempDeltaDelta: 0
       seaLevelDeltaDelta: 0
       iceSheetDeltaDelta: 0
-      co2DeltaDelta: -0.3
+      co2DeltaDelta: -0.03
     - text: Continue normal operations (take no action)
       moneyRequired: 0
       scienceRequired: 0
@@ -7102,11 +7101,11 @@ MonoBehaviour:
       seaLevelDelta: 0
       iceSheetDelta: 0
       co2Delta: 2
-      globalTempDeltaDelta: 0.01
+      globalTempDeltaDelta: 0.001
       oceanTempDeltaDelta: 0
       seaLevelDeltaDelta: 0
       iceSheetDeltaDelta: 0
-      co2DeltaDelta: 0.4
+      co2DeltaDelta: 0.04
     articleLink: https://www.nytimes.com/2020/09/23/climate/california-ban-gas-cars.html
   title: {fileID: 1311849637}
   prompt: {fileID: 253400643}
@@ -7517,7 +7516,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 50
     m_Right: 50
-    m_Top: 20
+    m_Top: 40
     m_Bottom: 40
   m_ChildAlignment: 0
   m_Spacing: 12
@@ -7944,8 +7943,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.12033, y: -313.22684}
-  m_SizeDelta: {x: 858.24066, y: 69.76387}
+  m_AnchoredPosition: {x: 479.12033, y: -325.72684}
+  m_SizeDelta: {x: 858.24066, y: 64.76387}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1756335550
 MonoBehaviour:

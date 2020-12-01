@@ -94,7 +94,7 @@ public class MainGameBackend : MonoBehaviour
         if (Input.GetKeyDown("f2"))
         {
             setResourceValues(161, 125, 87, 108);
-            setMetricValues(8.1f, 6.2f, 405.6f, 30238.8f, 3552.3f, 
+            setMetricValues(8.1f, 6.2f, 405.6f, 30238.8f, 500f, 
                 0.03f, 0.03f, 2f, 60f, 6f, 2084, 3);
         }
         if (Input.GetKeyDown("space"))
