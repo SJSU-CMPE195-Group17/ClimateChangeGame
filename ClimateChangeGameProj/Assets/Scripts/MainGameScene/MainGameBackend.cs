@@ -40,13 +40,14 @@ public class MainGameBackend : MonoBehaviour
     public const float OCEAN_TEMP_BASE = 1.25f;
     public const float SEA_LEVEL_BASE = 94f;
     public const float ICE_SHEET_BASE = 7200f;
-    public const float CO2_BASE = 1050f;
+    public const float CO2_BASE = 415f;
 
-    public const float GLOBAL_TEMP_DELTA_BASE = 0.01f;
+    //deltas are per season
+    public const float GLOBAL_TEMP_DELTA_BASE = 0.021f; //1.656f in 2018 to 1.78f in 2019, reduced for difficulty
     public const float OCEAN_TEMP_DELTA_BASE = 0.01f;
-    public const float SEA_LEVEL_DELTA_BASE = 0.8f;
-    public const float ICE_SHEET_DELTA_BASE = 37f;
-    public const float CO2_DELTA_BASE = 1.75f;
+    public const float SEA_LEVEL_DELTA_BASE = 0.8f; //from nasa
+    public const float ICE_SHEET_DELTA_BASE = 37f; //from nasa
+    public const float CO2_DELTA_BASE = 0.69f; // from nasa
     public const int START_YEAR = 2020;
     public const int START_SEASON = 0;
 
@@ -55,7 +56,7 @@ public class MainGameBackend : MonoBehaviour
     public const float OCEAN_TEMP_MAX = 7.5f;
     public const float SEA_LEVEL_MAX = 564f;
     public const float ICE_SHEET_MAX = 43200f;
-    public const float CO2_MAX = 6300f;
+    public const float CO2_MAX = 1000f;
 
     public Color MinBarColor = Color.yellow;
     public Color MaxBarColor = Color.red;
@@ -78,7 +79,6 @@ public class MainGameBackend : MonoBehaviour
     void Start()
     {
         updateGui();
-        //mymultiplechoicequestions.GetComponent<multiplechoicequestions>().AddQuestions("a text", "b text", "c text", "d text");
     }
 
     private void Update()
